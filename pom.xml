@@ -27,8 +27,7 @@ Contributors:
     <modules>
         <module>repository</module>
         <module>bundles</module>
-        <module>feature1</module>
-        <module>feature2</module>
+        <module>features</module>
         <module>oxygen</module>
         <module>root-files</module>
         <module>root-files-windows</module>

@@ -13,15 +13,15 @@ Contributors:
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<version>0.1.0-SNAPSHOT</version>
-	<artifactId>feature1</artifactId>
+	<version>0.2.0-SNAPSHOT</version>
+	<artifactId>feature2</artifactId>
 	<packaging>eclipse-feature</packaging>
-	<name>RCP OSCAR Feature 1</name>
+	<name>RCP OSCAR Feature 2</name>
 
 	<parent>
 		<version>1.0.0-SNAPSHOT</version>
 		<groupId>org.rubis.oscar</groupId>
-		<artifactId>org.rubis.oscar.root</artifactId>
+		<artifactId>org.rubis.oscar.features</artifactId>
 	</parent>
 
 </project>
