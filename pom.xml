@@ -34,6 +34,14 @@ Contributors:
         <module>root-files-windows</module>
     </modules>
 
+    <repositories>
+    <repository>
+        <id>oxygen</id>
+        <layout>p2</layout>
+        <url>http://download.eclipse.org/releases/oxygen</url>
+    </repository>
+    </repositories>
+
     <build>
         <plugins>
             <plugin>
