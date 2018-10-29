@@ -26,7 +26,7 @@ Contributors:
 
     <modules>
         <module>repository</module>
-        <module>bundle</module>
+        <module>bundles</module>
         <module>feature1</module>
         <module>feature2</module>
         <module>oxygen</module>
