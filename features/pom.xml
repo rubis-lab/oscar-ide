@@ -27,6 +27,7 @@ Contributors:
 
     <modules>
         <module>feature1</module>
+        <module>org.rubis.oscar.feature1</module>
         <module>feature2</module>
     </modules>
 

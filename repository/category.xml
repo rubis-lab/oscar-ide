@@ -3,6 +3,9 @@
    <feature url="feature1/feature1_0.1.0.qualifier.jar" id="feature1" version="0.1.0.qualifier">
       <category name="oscar_category_id"/>
    </feature>
+   <feature url="org.rubis.oscar.feature1/org.rubis.oscar.feature1_0.1.0.qualifier.jar" id="org.rubis.oscar.feature1" version="0.1.0.qualifier">
+      <category name="oscar_category_id_1"/>
+   </feature>
    <!-- <feature url="features/example-feature-2_0.2.0.qualifier.jar" id="example-feature-2" version="0.2.0.qualifier"> -->
    <feature url="feature2/feature2_0.2.0.qualifier.jar" id="feature2" version="0.2.0.qualifier">
       <category name="install_feature2_category"/>

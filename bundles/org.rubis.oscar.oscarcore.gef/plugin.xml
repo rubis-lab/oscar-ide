@@ -11,5 +11,13 @@
             name="OSCAR Graphical Editor">
       </editor>
    </extension>
+   <extension
+         id="oscargef"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ant.core.antRunner"
+            name="OSCAR Product">
+      </product>
+   </extension>
 
 </plugin>
