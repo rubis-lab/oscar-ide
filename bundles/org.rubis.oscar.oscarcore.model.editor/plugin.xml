@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated oscar -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="oscar.presentation.OscarModelWizardID"
+            name="%_UI_OscarModelWizard_label"
+            class="oscar.presentation.OscarModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/OscarModelFile.gif">
+         <description>%_UI_OscarModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated oscar -->
+      <editor
+            id="oscar.presentation.OscarEditorID"
+            name="%_UI_OscarEditor_label"
+            icon="icons/full/obj16/OscarModelFile.gif"
+            extensions="oscar"
+            class="oscar.presentation.OscarEditor"
+            contributorClass="oscar.presentation.OscarActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
