@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: OSCAR Graphical Editor
+Bundle-SymbolicName: org.rubis.oscar.oscarcore.gef;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.rubis.oscar.oscarcore.gef.Activator
+Bundle-Vendor: RUBIS
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.gef;bundle-version="3.11.0",
+ org.rubis.oscar.oscarcore.model;bundle-version="0.1.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: org.rubis.oscar.oscarcore.gef
+Bundle-ActivationPolicy: lazy

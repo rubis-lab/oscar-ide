@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.rubis.oscar.oscarcore.gef.editor.OSCARGraphicalEditor"
+            default="false"
+            extensions="oscar"
+            id="org.rubis.oscar.oscarcore.gef.editorID"
+            name="OSCAR Graphical Editor">
+      </editor>
+   </extension>
+
+</plugin>
