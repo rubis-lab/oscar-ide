@@ -7,12 +7,33 @@
          point="org.eclipse.core.runtime.products">
       <product
             name="org.rubis.oscar.rcp"
-            application="org.eclipse.e4.ui.workbench.swt.E4Application">
+            application="org.rubis.oscar.rcp.application">
          <property
-               name="applicationCSS"
-               value="platform:/plugin/org.rubis.oscar.rcp/css/default.css">
+               name="applicationXMI"
+               value="org.rubis.oscar.rcp/Application.e4xmi">
+         </property>
+         <property
+               name="appName"
+               value="org.rubis.oscar.rcp">
          </property>
       </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="org.rubis.oscar.rcp.Perspective"
+            id="org.rubis.oscar.rcp.perspective"
+            name="Oscar Perspective">
+      </perspective>
+   </extension>
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="org.rubis.oscar.rcp.Application">
+         </run>
+      </application>
    </extension>
 
 </plugin>
