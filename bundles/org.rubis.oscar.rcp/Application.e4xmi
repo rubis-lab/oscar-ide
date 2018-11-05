@@ -13,7 +13,7 @@
           </children>
           <children xsi:type="basic:PartSashContainer" xmi:id="_QtUegOD2EeiZnIgQtE9QVg" elementId="" containerData="10000" horizontal="true">
             <children xsi:type="basic:PartSashContainer" xmi:id="_g85EcOD2EeiZnIgQtE9QVg" elementId="" containerData="10000">
-              <children xsi:type="advanced:Placeholder" xmi:id="_l_2A8OD2EeiZnIgQtE9QVg" elementId="org.eclipse.ui.editorss" ref="_Vgeg8OD1EeiZnIgQtE9QVg"/>
+              <children xsi:type="advanced:Placeholder" xmi:id="_l_2A8OD2EeiZnIgQtE9QVg" elementId="org.eclipse.ui.editorss" ref="_Bm7GIOEBEeija9sMNaPm0A"/>
               <children xsi:type="basic:PartStack" xmi:id="_uqQMUOD2EeiZnIgQtE9QVg" elementId="">
                 <children xsi:type="advanced:Placeholder" xmi:id="_wBH4oOD2EeiZnIgQtE9QVg" elementId="org.eclipse.ui.console.ConsoleView" ref="_XFORMOD1EeiZnIgQtE9QVg"/>
               </children>
@@ -65,6 +65,7 @@
       </menus>
       <toolbar xmi:id="_Z3HKAOD1EeiZnIgQtE9QVg" elementId="org.eclipse.ui.console.ConsoleView"/>
     </sharedElements>
+    <sharedElements xsi:type="basic:Part" xmi:id="_Bm7GIOEBEeija9sMNaPm0A" elementId="org.rubis.oscar.rcp.part.oscargraphicaleditorpart" contributionURI="bundleclass://org.rubis.oscar.rcp/org.rubis.oscar.rcp.gef.editor.OSCARGraphicalEditor" label="OSCAR Graphical Editor Part"/>
     <trimBars xmi:id="_ISwicOD1EeiZnIgQtE9QVg" elementId="org.rubis.oscar.rcp.trimbar.0"/>
     <trimBars xmi:id="_InJeEOD1EeiZnIgQtE9QVg" elementId="org.eclipse.ui.trim.status" side="Bottom">
       <children xsi:type="menu:ToolControl" xmi:id="_LMr88OD1EeiZnIgQtE9QVg" elementId="org.eclipse.ui.StatusLine" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.StandardTrim"/>
@@ -88,6 +89,7 @@
     <tags>View</tags>
     <tags>categoryTag:General</tags>
   </descriptors>
+  <descriptors xmi:id="_-jkC0OEAEeija9sMNaPm0A" elementId="org.rubis.oscar.rcp.partdescriptor.oscargraphicaleditorpartdescriptor" label="OSCAR Graphical Editor Part descriptor" contributionURI="bundleclass://org.rubis.oscar.rcp/org.rubis.oscar.rcp.gef.editor.OSCARGraphicalEditor"/>
   <addons xmi:id="_c3AF0sjYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_c3AF08jYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_c3AF1MjYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>

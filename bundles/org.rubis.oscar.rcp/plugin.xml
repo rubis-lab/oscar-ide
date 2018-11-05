@@ -35,5 +35,15 @@
          </run>
       </application>
    </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.rubis.oscar.rcp.gef.editor.OSCARGraphicalEditor"
+            default="false"
+            extensions="oscar"
+            id="org.rubis.oscar.rcp.editorID"
+            name="OSCAR Editor">
+      </editor>
+   </extension>
 
 </plugin>
