@@ -29,6 +29,46 @@ public class OSCARFTPClient {
 		ftp.setFileType(FTP.BINARY_FILE_TYPE);
 		ftp.enterLocalPassiveMode();
 	}
+
+	
+	public void uploadDirectory(String currDir, String currHostDir) throws Exception {
+		File dir = new File(currDir);
+		File[] fileList = dir.listFiles();
+		
+		// Create directory
+		System.out.println("currentLocalDir:" + currDir);
+		
+		boolean dirExists = this.ftp.changeWorkingDirectory(currHostDir);
+		if(dirExists) {
+			System.out.println("Dir exists!");
+		} else {
+			System.out.println("No dir, creating one.");
+			this.ftp.makeDirectory(currHostDir);
+			this.ftp.changeWorkingDirectory(currHostDir);
+		}
+
+		// Append files
+		if(fileList != null) {
+			for(File child : fileList) {
+				// upload files
+				if(!child.isDirectory()) {
+					System.out.println("Uploading file: " + child.getAbsolutePath());
+					System.out.println("Name: " + child.getName());
+					uploadFile(child.getAbsolutePath(), child.getName(), currHostDir);
+				
+				// upload nested directory
+				} else {
+					System.out.println("Directory..");
+					
+					System.out.println("curr host dir:" + currHostDir);
+					System.out.println("new host dir: " +  currHostDir + child.getName() + "/");
+					
+					uploadDirectory(child.getPath(), currHostDir + child.getName() + "/");
+				}
+			}
+		}
+		
+	}
 	
 	public void uploadFile(String localFileFullName, String fileName, String hostDir) throws Exception {
 		try(InputStream input = new FileInputStream(new File(localFileFullName))){
@@ -36,7 +76,7 @@ public class OSCARFTPClient {
 		}
 	}
 	
-	public void disconnect( ) {
+	public void disconnect() {
 		if (this.ftp.isConnected()) {
 			try {
 				this.ftp.logout();
@@ -45,5 +85,14 @@ public class OSCARFTPClient {
 				f.printStackTrace();
 			}
 		}
+	}
+	
+	public static void main(String[] args) throws Exception {
+		System.out.println("Start");
+		OSCARFTPClient oscarftp = new OSCARFTPClient("147.46.121.131", "nvidia", "nvidia");
+		oscarftp.uploadDirectory("C:\\Users\\upoque\\aaa", "/home/nvidia/aaa/");
+		oscarftp.disconnect();
+		System.out.println("End");
+		
 	}
 }
