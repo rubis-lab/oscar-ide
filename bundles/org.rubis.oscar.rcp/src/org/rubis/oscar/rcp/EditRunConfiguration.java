@@ -7,7 +7,6 @@ import java.io.IOException;
 
 import javax.inject.Inject;
 
-
 import org.eclipse.core.databinding.ObservablesManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -20,8 +19,7 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Text;
-//import org.rubis.oscar.ftp.*;
-
+import org.rubis.oscar.ftp.OSCARFTPClient;
 
 
 public class EditRunConfiguration{
@@ -154,11 +152,18 @@ public class EditRunConfiguration{
 		});				
 		
 		
-		/*runButton.addSelectionListener(new SelectionAdapter() {
+		runButton.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent event) {			
 			
 				System.out.println("Start");
+				try {
+					OSCARFTPClient oscarftp = new OSCARFTPClient(addressText.getText(), userText.getText(), passwordText.getText());
+					oscarftp.testOSCARFTP();
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+				/*
 				try {
 				OSCARFTPClient oscarftp = new OSCARFTPClient(addressText.getText(), userText.getText(), passwordText.getText()); 
 				oscarftp.uploadDirectory("C:\\", locationText.getText());
@@ -169,9 +174,10 @@ public class EditRunConfiguration{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				*/
 			
 			}
-		});*/
+		});
     }
 }
 	

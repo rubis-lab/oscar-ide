@@ -87,6 +87,10 @@ public class OSCARFTPClient {
 		}
 	}
 	
+	public void testOSCARFTP() {
+		System.out.println("OSCAR FTP Test");
+	}
+	
 	public static void main(String[] args) throws Exception {
 		System.out.println("Start");
 		OSCARFTPClient oscarftp = new OSCARFTPClient("147.46.121.131", "nvidia", "nvidia");
