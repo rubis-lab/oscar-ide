@@ -32,7 +32,7 @@ Contributors:
         <module>org.rubis.oscar.oscarcore.model.edit</module>
         <module>org.rubis.oscar.oscarcore.model.editor</module>
         <module>org.rubis.oscar.oscarcore.model.tests</module>
-        <module>org.rubis.oscar.rcp</module>
+        <module>org.rubis.oscar.rcp</module>        
     </modules>
 
 </project>

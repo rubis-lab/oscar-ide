@@ -27,6 +27,11 @@
         </children>
       </children>
     </children>
+    <mainMenu xmi:id="_PRUqoORkEeiAAesn1c4Vag" elementId="org.rubis.oscar.rcp.menu.0">
+      <children xsi:type="menu:Menu" xmi:id="_P4uo4ORkEeiAAesn1c4Vag" elementId="org.rubis.oscar.rcp.menu.run" label="Run">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_Q-bFoORkEeiAAesn1c4Vag" elementId="" label="Run Configuration" command="_dmLa4ORlEeiAAesn1c4Vag"/>
+      </children>
+    </mainMenu>
     <sharedElements xsi:type="advanced:Area" xmi:id="_Vgeg8OD1EeiZnIgQtE9QVg" elementId="org.eclipse.ui.editorss">
       <children xsi:type="basic:PartStack" xmi:id="_9JG4AOD1EeiZnIgQtE9QVg" elementId="org.eclipse.e4.primaryDataStack">
         <tags>newtablook</tags>
@@ -73,6 +78,7 @@
       <children xsi:type="menu:ToolControl" xmi:id="_L0wCgOD1EeiZnIgQtE9QVg" elementId="org.eclipse.ui.ProgressBar" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.StandardTrim"/>
     </trimBars>
   </children>
+  <handlers xmi:id="_XKNdAORlEeiAAesn1c4Vag" elementId="org.rubis.oscar.rcp.handler.0" contributionURI="bundleclass://org.rubis.oscar.rcp/org.rubis.oscar.rcp.MenuRunConfiguration" command="_dmLa4ORlEeiAAesn1c4Vag"/>
   <rootContext xmi:id="_c3AF2cjYEeSyMNYR5xypkQ" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
     <children xmi:id="_c3AF2sjYEeSyMNYR5xypkQ" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
     <children xmi:id="_c3AF28jYEeSyMNYR5xypkQ" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
@@ -90,6 +96,7 @@
     <tags>categoryTag:General</tags>
   </descriptors>
   <descriptors xmi:id="_-jkC0OEAEeija9sMNaPm0A" elementId="org.rubis.oscar.rcp.partdescriptor.oscargraphicaleditorpartdescriptor" label="OSCAR Graphical Editor Part descriptor" contributionURI="bundleclass://org.rubis.oscar.rcp/org.rubis.oscar.rcp.gef.editor.OSCARGraphicalEditor"/>
+  <commands xmi:id="_dmLa4ORlEeiAAesn1c4Vag" elementId="org.rubis.oscar.rcp.command.runconfiguration" commandName="Run Configuration"/>
   <addons xmi:id="_c3AF0sjYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_c3AF08jYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_c3AF1MjYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>

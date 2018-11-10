@@ -1,9 +1,8 @@
 Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Rcp
+Automatic-Module-Name: org.rubis.oscar.rcp
 Bundle-SymbolicName: org.rubis.oscar.rcp;singleton:=true
+Bundle-Name: Rcp
 Bundle-Version: 1.0.0.qualifier
-Bundle-Vendor: RUBIS
 Require-Bundle: javax.inject;bundle-version="0.0.0",
  org.eclipse.core.runtime;bundle-version="0.0.0",
  org.eclipse.swt;bundle-version="0.0.0",
@@ -21,8 +20,11 @@ Require-Bundle: javax.inject;bundle-version="0.0.0",
  org.eclipse.ui.ide;bundle-version="3.13.1",
  org.eclipse.ui.console;bundle-version="3.7.1",
  org.eclipse.gef;bundle-version="3.11.0",
- org.rubis.oscar.oscarcore.model;bundle-version="0.1.0"
-Automatic-Module-Name: org.rubis.oscar.rcp
+ org.rubis.oscar.oscarcore.model;bundle-version="0.1.0",
+ org.eclipse.core.databinding;bundle-version="1.6.100"
+Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.rubis.oscar.rcp.Activator
+Bundle-Vendor: RUBIS
+
