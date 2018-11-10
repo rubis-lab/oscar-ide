@@ -131,6 +131,155 @@ public interface OscarPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link oscar.impl.ModuleImpl <em>Module</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see oscar.impl.ModuleImpl
+	 * @see oscar.impl.OscarPackageImpl#getModule()
+	 * @generated
+	 */
+	int MODULE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link oscar.impl.PublishImpl <em>Publish</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see oscar.impl.PublishImpl
+	 * @see oscar.impl.OscarPackageImpl#getPublish()
+	 * @generated
+	 */
+	int PUBLISH = 3;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PUBLISH__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Publish</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PUBLISH_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Publish</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PUBLISH_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link oscar.impl.SubscribeImpl <em>Subscribe</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see oscar.impl.SubscribeImpl
+	 * @see oscar.impl.OscarPackageImpl#getSubscribe()
+	 * @generated
+	 */
+	int SUBSCRIBE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBSCRIBE__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Subscribe</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBSCRIBE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Subscribe</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBSCRIBE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link oscar.impl.TopicImpl <em>Topic</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see oscar.impl.TopicImpl
+	 * @see oscar.impl.OscarPackageImpl#getTopic()
+	 * @generated
+	 */
+	int TOPIC = 5;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOPIC__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Topic</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOPIC_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Topic</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOPIC_OPERATION_COUNT = 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link oscar.ModuleInput <em>Module Input</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -171,6 +320,90 @@ public interface OscarPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getModuleOutput_Name();
+
+	/**
+	 * Returns the meta object for class '{@link oscar.Module <em>Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Module</em>'.
+	 * @see oscar.Module
+	 * @generated
+	 */
+	EClass getModule();
+
+	/**
+	 * Returns the meta object for the attribute '{@link oscar.Module#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see oscar.Module#getName()
+	 * @see #getModule()
+	 * @generated
+	 */
+	EAttribute getModule_Name();
+
+	/**
+	 * Returns the meta object for class '{@link oscar.Publish <em>Publish</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Publish</em>'.
+	 * @see oscar.Publish
+	 * @generated
+	 */
+	EClass getPublish();
+
+	/**
+	 * Returns the meta object for the attribute '{@link oscar.Publish#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see oscar.Publish#getName()
+	 * @see #getPublish()
+	 * @generated
+	 */
+	EAttribute getPublish_Name();
+
+	/**
+	 * Returns the meta object for class '{@link oscar.Subscribe <em>Subscribe</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Subscribe</em>'.
+	 * @see oscar.Subscribe
+	 * @generated
+	 */
+	EClass getSubscribe();
+
+	/**
+	 * Returns the meta object for the attribute '{@link oscar.Subscribe#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see oscar.Subscribe#getName()
+	 * @see #getSubscribe()
+	 * @generated
+	 */
+	EAttribute getSubscribe_Name();
+
+	/**
+	 * Returns the meta object for class '{@link oscar.Topic <em>Topic</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Topic</em>'.
+	 * @see oscar.Topic
+	 * @generated
+	 */
+	EClass getTopic();
+
+	/**
+	 * Returns the meta object for the attribute '{@link oscar.Topic#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see oscar.Topic#getName()
+	 * @see #getTopic()
+	 * @generated
+	 */
+	EAttribute getTopic_Name();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -230,6 +463,78 @@ public interface OscarPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MODULE_OUTPUT__NAME = eINSTANCE.getModuleOutput_Name();
+
+		/**
+		 * The meta object literal for the '{@link oscar.impl.ModuleImpl <em>Module</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see oscar.impl.ModuleImpl
+		 * @see oscar.impl.OscarPackageImpl#getModule()
+		 * @generated
+		 */
+		EClass MODULE = eINSTANCE.getModule();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODULE__NAME = eINSTANCE.getModule_Name();
+
+		/**
+		 * The meta object literal for the '{@link oscar.impl.PublishImpl <em>Publish</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see oscar.impl.PublishImpl
+		 * @see oscar.impl.OscarPackageImpl#getPublish()
+		 * @generated
+		 */
+		EClass PUBLISH = eINSTANCE.getPublish();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PUBLISH__NAME = eINSTANCE.getPublish_Name();
+
+		/**
+		 * The meta object literal for the '{@link oscar.impl.SubscribeImpl <em>Subscribe</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see oscar.impl.SubscribeImpl
+		 * @see oscar.impl.OscarPackageImpl#getSubscribe()
+		 * @generated
+		 */
+		EClass SUBSCRIBE = eINSTANCE.getSubscribe();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SUBSCRIBE__NAME = eINSTANCE.getSubscribe_Name();
+
+		/**
+		 * The meta object literal for the '{@link oscar.impl.TopicImpl <em>Topic</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see oscar.impl.TopicImpl
+		 * @see oscar.impl.OscarPackageImpl#getTopic()
+		 * @generated
+		 */
+		EClass TOPIC = eINSTANCE.getTopic();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TOPIC__NAME = eINSTANCE.getTopic_Name();
 
 	}
 

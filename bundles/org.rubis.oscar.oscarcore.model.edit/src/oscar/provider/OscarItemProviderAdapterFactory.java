@@ -118,6 +118,98 @@ public class OscarItemProviderAdapterFactory extends OscarAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link oscar.Module} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ModuleItemProvider moduleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link oscar.Module}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createModuleAdapter() {
+		if (moduleItemProvider == null) {
+			moduleItemProvider = new ModuleItemProvider(this);
+		}
+
+		return moduleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link oscar.Publish} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PublishItemProvider publishItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link oscar.Publish}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPublishAdapter() {
+		if (publishItemProvider == null) {
+			publishItemProvider = new PublishItemProvider(this);
+		}
+
+		return publishItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link oscar.Subscribe} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SubscribeItemProvider subscribeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link oscar.Subscribe}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSubscribeAdapter() {
+		if (subscribeItemProvider == null) {
+			subscribeItemProvider = new SubscribeItemProvider(this);
+		}
+
+		return subscribeItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link oscar.Topic} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TopicItemProvider topicItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link oscar.Topic}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTopicAdapter() {
+		if (topicItemProvider == null) {
+			topicItemProvider = new TopicItemProvider(this);
+		}
+
+		return topicItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -218,6 +310,10 @@ public class OscarItemProviderAdapterFactory extends OscarAdapterFactory impleme
 	public void dispose() {
 		if (moduleInputItemProvider != null) moduleInputItemProvider.dispose();
 		if (moduleOutputItemProvider != null) moduleOutputItemProvider.dispose();
+		if (moduleItemProvider != null) moduleItemProvider.dispose();
+		if (publishItemProvider != null) publishItemProvider.dispose();
+		if (subscribeItemProvider != null) subscribeItemProvider.dispose();
+		if (topicItemProvider != null) topicItemProvider.dispose();
 	}
 
 }

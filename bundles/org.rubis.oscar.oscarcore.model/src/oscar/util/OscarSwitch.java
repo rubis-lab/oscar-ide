@@ -78,6 +78,30 @@ public class OscarSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case OscarPackage.MODULE: {
+				Module module = (Module)theEObject;
+				T result = caseModule(module);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OscarPackage.PUBLISH: {
+				Publish publish = (Publish)theEObject;
+				T result = casePublish(publish);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OscarPackage.SUBSCRIBE: {
+				Subscribe subscribe = (Subscribe)theEObject;
+				T result = caseSubscribe(subscribe);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OscarPackage.TOPIC: {
+				Topic topic = (Topic)theEObject;
+				T result = caseTopic(topic);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -109,6 +133,66 @@ public class OscarSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseModuleOutput(ModuleOutput object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Module</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseModule(Module object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Publish</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Publish</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePublish(Publish object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Subscribe</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Subscribe</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSubscribe(Subscribe object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Topic</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Topic</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTopic(Topic object) {
 		return null;
 	}
 

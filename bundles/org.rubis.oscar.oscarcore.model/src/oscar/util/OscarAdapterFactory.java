@@ -76,6 +76,22 @@ public class OscarAdapterFactory extends AdapterFactoryImpl {
 				return createModuleOutputAdapter();
 			}
 			@Override
+			public Adapter caseModule(Module object) {
+				return createModuleAdapter();
+			}
+			@Override
+			public Adapter casePublish(Publish object) {
+				return createPublishAdapter();
+			}
+			@Override
+			public Adapter caseSubscribe(Subscribe object) {
+				return createSubscribeAdapter();
+			}
+			@Override
+			public Adapter caseTopic(Topic object) {
+				return createTopicAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -120,6 +136,62 @@ public class OscarAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createModuleOutputAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link oscar.Module <em>Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see oscar.Module
+	 * @generated
+	 */
+	public Adapter createModuleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link oscar.Publish <em>Publish</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see oscar.Publish
+	 * @generated
+	 */
+	public Adapter createPublishAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link oscar.Subscribe <em>Subscribe</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see oscar.Subscribe
+	 * @generated
+	 */
+	public Adapter createSubscribeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link oscar.Topic <em>Topic</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see oscar.Topic
+	 * @generated
+	 */
+	public Adapter createTopicAdapter() {
 		return null;
 	}
 

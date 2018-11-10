@@ -8,10 +8,14 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import oscar.Module;
 import oscar.ModuleInput;
 import oscar.ModuleOutput;
 import oscar.OscarFactory;
 import oscar.OscarPackage;
+import oscar.Publish;
+import oscar.Subscribe;
+import oscar.Topic;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,6 +37,34 @@ public class OscarPackageImpl extends EPackageImpl implements OscarPackage {
 	 * @generated
 	 */
 	private EClass moduleOutputEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass moduleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass publishEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass subscribeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass topicEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -136,6 +168,78 @@ public class OscarPackageImpl extends EPackageImpl implements OscarPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getModule() {
+		return moduleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getModule_Name() {
+		return (EAttribute)moduleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPublish() {
+		return publishEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPublish_Name() {
+		return (EAttribute)publishEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSubscribe() {
+		return subscribeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSubscribe_Name() {
+		return (EAttribute)subscribeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTopic() {
+		return topicEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTopic_Name() {
+		return (EAttribute)topicEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public OscarFactory getOscarFactory() {
 		return (OscarFactory)getEFactoryInstance();
 	}
@@ -164,6 +268,18 @@ public class OscarPackageImpl extends EPackageImpl implements OscarPackage {
 
 		moduleOutputEClass = createEClass(MODULE_OUTPUT);
 		createEAttribute(moduleOutputEClass, MODULE_OUTPUT__NAME);
+
+		moduleEClass = createEClass(MODULE);
+		createEAttribute(moduleEClass, MODULE__NAME);
+
+		publishEClass = createEClass(PUBLISH);
+		createEAttribute(publishEClass, PUBLISH__NAME);
+
+		subscribeEClass = createEClass(SUBSCRIBE);
+		createEAttribute(subscribeEClass, SUBSCRIBE__NAME);
+
+		topicEClass = createEClass(TOPIC);
+		createEAttribute(topicEClass, TOPIC__NAME);
 	}
 
 	/**
@@ -201,6 +317,18 @@ public class OscarPackageImpl extends EPackageImpl implements OscarPackage {
 
 		initEClass(moduleOutputEClass, ModuleOutput.class, "ModuleOutput", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getModuleOutput_Name(), ecorePackage.getEString(), "Name", null, 0, 1, ModuleOutput.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(moduleEClass, Module.class, "Module", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getModule_Name(), ecorePackage.getEString(), "Name", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(publishEClass, Publish.class, "Publish", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPublish_Name(), ecorePackage.getEString(), "Name", null, 0, 1, Publish.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(subscribeEClass, Subscribe.class, "Subscribe", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSubscribe_Name(), ecorePackage.getEString(), "Name", null, 0, 1, Subscribe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(topicEClass, Topic.class, "Topic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTopic_Name(), ecorePackage.getEString(), "Name", null, 0, 1, Topic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -40,6 +40,42 @@ public interface OscarFactory extends EFactory {
 	ModuleOutput createModuleOutput();
 
 	/**
+	 * Returns a new object of class '<em>Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Module</em>'.
+	 * @generated
+	 */
+	Module createModule();
+
+	/**
+	 * Returns a new object of class '<em>Publish</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Publish</em>'.
+	 * @generated
+	 */
+	Publish createPublish();
+
+	/**
+	 * Returns a new object of class '<em>Subscribe</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Subscribe</em>'.
+	 * @generated
+	 */
+	Subscribe createSubscribe();
+
+	/**
+	 * Returns a new object of class '<em>Topic</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Topic</em>'.
+	 * @generated
+	 */
+	Topic createTopic();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

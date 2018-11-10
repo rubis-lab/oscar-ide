@@ -58,6 +58,10 @@ public class OscarFactoryImpl extends EFactoryImpl implements OscarFactory {
 		switch (eClass.getClassifierID()) {
 			case OscarPackage.MODULE_INPUT: return createModuleInput();
 			case OscarPackage.MODULE_OUTPUT: return createModuleOutput();
+			case OscarPackage.MODULE: return createModule();
+			case OscarPackage.PUBLISH: return createPublish();
+			case OscarPackage.SUBSCRIBE: return createSubscribe();
+			case OscarPackage.TOPIC: return createTopic();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -81,6 +85,46 @@ public class OscarFactoryImpl extends EFactoryImpl implements OscarFactory {
 	public ModuleOutput createModuleOutput() {
 		ModuleOutputImpl moduleOutput = new ModuleOutputImpl();
 		return moduleOutput;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Module createModule() {
+		ModuleImpl module = new ModuleImpl();
+		return module;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Publish createPublish() {
+		PublishImpl publish = new PublishImpl();
+		return publish;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Subscribe createSubscribe() {
+		SubscribeImpl subscribe = new SubscribeImpl();
+		return subscribe;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Topic createTopic() {
+		TopicImpl topic = new TopicImpl();
+		return topic;
 	}
 
 	/**
