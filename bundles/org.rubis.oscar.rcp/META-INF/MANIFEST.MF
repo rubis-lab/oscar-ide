@@ -22,7 +22,8 @@ Require-Bundle: javax.inject;bundle-version="0.0.0",
  org.eclipse.gef;bundle-version="3.11.0",
  org.rubis.oscar.oscarcore.model;bundle-version="0.1.0",
  org.eclipse.core.databinding;bundle-version="1.6.100",
- org.rubis.oscar.ftp;bundle-version="1.0.0"
+ org.rubis.oscar.ftp;bundle-version="1.0.0",
+ org.rubis.oscar.xml2ros;bundle-version="1.0.0"
 Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

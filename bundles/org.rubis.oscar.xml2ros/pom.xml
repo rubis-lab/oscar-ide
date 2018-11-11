@@ -14,26 +14,14 @@ Contributors:
     <modelVersion>4.0.0</modelVersion>
 
     <version>1.0.0-SNAPSHOT</version>
-    <groupId>org.rubis.oscar</groupId>
-    <artifactId>org.rubis.oscar.bundles</artifactId>
-    <packaging>pom</packaging>
-    <name>OSCAR Bundles</name>
+    <artifactId>org.rubis.oscar.xml2ros</artifactId>
+    <packaging>eclipse-plugin</packaging>
+    <name>OSCAR XML to ROS converter</name>
 
     <parent>
         <version>1.0.0-SNAPSHOT</version>
         <groupId>org.rubis.oscar</groupId>
-        <artifactId>org.rubis.oscar.root</artifactId>
+        <artifactId>org.rubis.oscar.bundles</artifactId>
     </parent>
-
-    <modules>
-        <module>bundle</module>
-        <module>org.rubis.oscar.ftp</module>
-        <module>org.rubis.oscar.xml2ros</module>
-        <module>org.rubis.oscar.oscarcore.model</module>
-        <module>org.rubis.oscar.oscarcore.model.edit</module>
-        <module>org.rubis.oscar.oscarcore.model.editor</module>
-        <module>org.rubis.oscar.oscarcore.model.tests</module>
-        <module>org.rubis.oscar.rcp</module>        
-    </modules>
 
 </project>

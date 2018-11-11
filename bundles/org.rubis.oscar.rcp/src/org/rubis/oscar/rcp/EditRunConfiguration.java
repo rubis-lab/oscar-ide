@@ -20,6 +20,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Text;
 import org.rubis.oscar.ftp.OSCARFTPClient;
+import org.rubis.oscar.xml2ros.*;
 
 
 public class EditRunConfiguration{
@@ -156,13 +157,20 @@ public class EditRunConfiguration{
 			
 			public void widgetSelected(SelectionEvent event) {			
 			
-				System.out.println("Start");
+				System.out.println("Start FTP Test");
 				try {
 					OSCARFTPClient oscarftp = new OSCARFTPClient(addressText.getText(), userText.getText(), passwordText.getText());
 					oscarftp.testOSCARFTP();
 				} catch(Exception e) {
 					e.printStackTrace();
 				}
+				System.out.println("End FTP Test");
+				
+				System.out.println("Start XML2ROS Test");
+					XML2ROS xr = new XML2ROS();
+					xr.testXML2ROS();
+					
+				System.out.println("End XML2ROS Test");
 				/*
 				try {
 				OSCARFTPClient oscarftp = new OSCARFTPClient(addressText.getText(), userText.getText(), passwordText.getText()); 

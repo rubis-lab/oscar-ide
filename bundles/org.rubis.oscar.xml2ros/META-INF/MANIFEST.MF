@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Xml2ros
+Bundle-SymbolicName: org.rubis.oscar.xml2ros
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: RUBIS
+Automatic-Module-Name: org.rubis.oscar.xml2ros
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.rubis.oscar.xml2ros
