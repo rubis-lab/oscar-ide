@@ -24,18 +24,9 @@ Eclipse IDE for Eclipse Committers
 (todo:) script to copy binaries
 
 4. Open OSCAR IDE
-   - On Linux go to:
-```bash
-    cd oscar-ide/repository/target/products/oscar.product/linux/gtk/x86_64
-```
-   - On MacOS X go to:
-```bash
-    cd oscar-ide/repository/target/products/oscar.product/macosx/cocoa/x86_64/Eclipse.app/Contents/Eclipse
-```
-   - On Windows go to:
-```bash
-    cd oscar-ide/repository/target/products/oscar.product/win32/win32/x86_64
-```
+   - On Linux go to `oscar-ide/repository/target/products/oscar.product/linux/gtk/x86_64`
+   - On MacOS X go to `oscar-ide/repository/target/products/oscar.product/macosx/cocoa/x86_64/Eclipse.app/Contents`
+   - On Windows go to `oscar-ide/repository/target/products/oscar.product/win32/win32/x86_64`
    - Run `eclipse` executable 
 
 5. Create new project
