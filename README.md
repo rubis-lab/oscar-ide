@@ -23,6 +23,44 @@ Eclipse IDE for Eclipse Committers
 `/releng/org.rubis.oscar.product/target/products/OSCAR/$(PLATFORM)`
 (todo:) script to copy binaries
 
+4. Open OSCAR IDE
+* On Linux:
+```bash
+	cd oscar-ide/repository/target/products/oscar.product/linux/gtk/x86_64
+```
+* On MacOS X:
+```bash
+	cd oscar-ide/repository/target/products/oscar.product/macosx/cocoa/x86_64/Eclipse.app/Contents/Eclipse
+```
+* On Windows:
+```bash
+	cd oscar-ide/repository/target/products/oscar.product/win32/win32/x86_64
+```
+Run `eclipse` executable 
+
+5. Create new project
+Right-click in the Project Explorer view, and sellect `New -> Project`
+Sellect `General -> Project` and click `Next`
+Type the `Project name` and click `Finish`
+
+6. Create new model
+Right-click on the project in the Project Explorer view, and sellect `New -> Other...`
+Sellect `Example EMF Model Creation Wizards -> Oscar Model`
+Type the `File name` with `.oscar` extension
+Under `Model Object` sellect `OSCAR Object Process Diagram`
+Under `XML Encoding` sellect `UTF-8`
+Click `Finish`
+
+7. Create new block diagram
+Right-click on the model in the Project Explorer view, and sellect `Open With -> OSCAR Editor`
+In the Palette view, sellect `Node` or `Topic`
+Draw a block by clicking anywhere inside the OSCAR Editor area and dragging the cursor
+Enter propery values in the Properies view 
+To create a link, sellect `Link` in the Palette view and click on two blocks you want to connect
+
+8. Save a model
+Press `Ctrl+S` and the XML file will be generated in the workspace in your project folder
+
 ## To import in Eclipse Oxygen
 1. File - Import - Existing Projects into Workspace
 
