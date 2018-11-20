@@ -21,6 +21,7 @@ import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Text;
 import org.rubis.oscar.ftp.OSCARFTPClient;
 import org.rubis.oscar.xml2ros.*;
+import org.rubis.oscar.oscar2xml.*;
 
 
 public class EditRunConfiguration{
@@ -155,8 +156,17 @@ public class EditRunConfiguration{
 		
 		runButton.addSelectionListener(new SelectionAdapter() {
 			
-			public void widgetSelected(SelectionEvent event) {			
-			
+			public void widgetSelected(SelectionEvent event) {
+				OSCAR2XML oscar2xml = new OSCAR2XML();
+				try {
+					//oscar2xml.convert("workspace" + File.separator + "My" + File.separator + "debugoutfromrcp.txt");
+					oscar2xml.preprocessXML("workspace" + File.separator + "My" + File.separator + "My.oscar");
+					oscar2xml.parseOSCAR();
+					oscar2xml.writeXML();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				/*
 				System.out.println("Start FTP Test");
 				try {
 					OSCARFTPClient oscarftp = new OSCARFTPClient(addressText.getText(), userText.getText(), passwordText.getText());
@@ -171,6 +181,7 @@ public class EditRunConfiguration{
 					xr.testXML2ROS();
 					
 				System.out.println("End XML2ROS Test");
+				*/
 				/*
 				try {
 				OSCARFTPClient oscarftp = new OSCARFTPClient(addressText.getText(), userText.getText(), passwordText.getText()); 
