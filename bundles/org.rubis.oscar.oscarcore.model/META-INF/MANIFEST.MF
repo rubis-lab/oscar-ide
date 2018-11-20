@@ -11,5 +11,7 @@ Export-Package: oscar,
  oscar.impl,
  oscar.util
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;visibility:=reexport,
+ org.eclipse.draw2d;bundle-version="3.10.100"
 Bundle-ActivationPolicy: lazy

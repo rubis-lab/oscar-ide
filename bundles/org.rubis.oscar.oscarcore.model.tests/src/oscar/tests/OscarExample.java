@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.util.Diagnostician;
 
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import oscar.ModuleInput;
+import oscar.OSCARContainer;
 import oscar.OscarFactory;
 import oscar.OscarPackage;
 
@@ -60,7 +60,7 @@ public class OscarExample {
 			System.out.println("Enter a list of file paths or URIs that have content like this:");
 			try {
 				Resource resource = resourceSet.createResource(URI.createURI("http:///My.oscar"));
-				ModuleInput root = OscarFactory.eINSTANCE.createModuleInput();
+				OSCARContainer root = OscarFactory.eINSTANCE.createOSCARContainer();
 				resource.getContents().add(root);
 				resource.save(System.out, null);
 			}

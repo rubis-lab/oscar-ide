@@ -72,118 +72,118 @@ public class OscarItemProviderAdapterFactory extends OscarAdapterFactory impleme
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link oscar.ModuleInput} instances.
+	 * This keeps track of the one adapter used for all {@link oscar.OSCARContainer} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ModuleInputItemProvider moduleInputItemProvider;
+	protected OSCARContainerItemProvider oscarContainerItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link oscar.ModuleInput}.
+	 * This creates an adapter for a {@link oscar.OSCARContainer}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createModuleInputAdapter() {
-		if (moduleInputItemProvider == null) {
-			moduleInputItemProvider = new ModuleInputItemProvider(this);
+	public Adapter createOSCARContainerAdapter() {
+		if (oscarContainerItemProvider == null) {
+			oscarContainerItemProvider = new OSCARContainerItemProvider(this);
 		}
 
-		return moduleInputItemProvider;
+		return oscarContainerItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link oscar.ModuleOutput} instances.
+	 * This keeps track of the one adapter used for all {@link oscar.OSCARObjectProcessDiagram} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ModuleOutputItemProvider moduleOutputItemProvider;
+	protected OSCARObjectProcessDiagramItemProvider oscarObjectProcessDiagramItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link oscar.ModuleOutput}.
+	 * This creates an adapter for a {@link oscar.OSCARObjectProcessDiagram}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createModuleOutputAdapter() {
-		if (moduleOutputItemProvider == null) {
-			moduleOutputItemProvider = new ModuleOutputItemProvider(this);
+	public Adapter createOSCARObjectProcessDiagramAdapter() {
+		if (oscarObjectProcessDiagramItemProvider == null) {
+			oscarObjectProcessDiagramItemProvider = new OSCARObjectProcessDiagramItemProvider(this);
 		}
 
-		return moduleOutputItemProvider;
+		return oscarObjectProcessDiagramItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link oscar.Module} instances.
+	 * This keeps track of the one adapter used for all {@link oscar.OSCARNode} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ModuleItemProvider moduleItemProvider;
+	protected OSCARNodeItemProvider oscarNodeItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link oscar.Module}.
+	 * This creates an adapter for a {@link oscar.OSCARNode}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createModuleAdapter() {
-		if (moduleItemProvider == null) {
-			moduleItemProvider = new ModuleItemProvider(this);
+	public Adapter createOSCARNodeAdapter() {
+		if (oscarNodeItemProvider == null) {
+			oscarNodeItemProvider = new OSCARNodeItemProvider(this);
 		}
 
-		return moduleItemProvider;
+		return oscarNodeItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link oscar.Publish} instances.
+	 * This keeps track of the one adapter used for all {@link oscar.OSCARThing} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PublishItemProvider publishItemProvider;
+	protected OSCARThingItemProvider oscarThingItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link oscar.Publish}.
+	 * This creates an adapter for a {@link oscar.OSCARThing}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createPublishAdapter() {
-		if (publishItemProvider == null) {
-			publishItemProvider = new PublishItemProvider(this);
+	public Adapter createOSCARThingAdapter() {
+		if (oscarThingItemProvider == null) {
+			oscarThingItemProvider = new OSCARThingItemProvider(this);
 		}
 
-		return publishItemProvider;
+		return oscarThingItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link oscar.Subscribe} instances.
+	 * This keeps track of the one adapter used for all {@link oscar.Node} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SubscribeItemProvider subscribeItemProvider;
+	protected NodeItemProvider nodeItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link oscar.Subscribe}.
+	 * This creates an adapter for a {@link oscar.Node}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSubscribeAdapter() {
-		if (subscribeItemProvider == null) {
-			subscribeItemProvider = new SubscribeItemProvider(this);
+	public Adapter createNodeAdapter() {
+		if (nodeItemProvider == null) {
+			nodeItemProvider = new NodeItemProvider(this);
 		}
 
-		return subscribeItemProvider;
+		return nodeItemProvider;
 	}
 
 	/**
@@ -207,6 +207,52 @@ public class OscarItemProviderAdapterFactory extends OscarAdapterFactory impleme
 		}
 
 		return topicItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link oscar.OSCARLink} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OSCARLinkItemProvider oscarLinkItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link oscar.OSCARLink}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOSCARLinkAdapter() {
+		if (oscarLinkItemProvider == null) {
+			oscarLinkItemProvider = new OSCARLinkItemProvider(this);
+		}
+
+		return oscarLinkItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link oscar.OSCARProceduralLink} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OSCARProceduralLinkItemProvider oscarProceduralLinkItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link oscar.OSCARProceduralLink}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOSCARProceduralLinkAdapter() {
+		if (oscarProceduralLinkItemProvider == null) {
+			oscarProceduralLinkItemProvider = new OSCARProceduralLinkItemProvider(this);
+		}
+
+		return oscarProceduralLinkItemProvider;
 	}
 
 	/**
@@ -308,12 +354,14 @@ public class OscarItemProviderAdapterFactory extends OscarAdapterFactory impleme
 	 * @generated
 	 */
 	public void dispose() {
-		if (moduleInputItemProvider != null) moduleInputItemProvider.dispose();
-		if (moduleOutputItemProvider != null) moduleOutputItemProvider.dispose();
-		if (moduleItemProvider != null) moduleItemProvider.dispose();
-		if (publishItemProvider != null) publishItemProvider.dispose();
-		if (subscribeItemProvider != null) subscribeItemProvider.dispose();
+		if (oscarContainerItemProvider != null) oscarContainerItemProvider.dispose();
+		if (oscarObjectProcessDiagramItemProvider != null) oscarObjectProcessDiagramItemProvider.dispose();
+		if (oscarNodeItemProvider != null) oscarNodeItemProvider.dispose();
+		if (oscarThingItemProvider != null) oscarThingItemProvider.dispose();
+		if (nodeItemProvider != null) nodeItemProvider.dispose();
 		if (topicItemProvider != null) topicItemProvider.dispose();
+		if (oscarLinkItemProvider != null) oscarLinkItemProvider.dispose();
+		if (oscarProceduralLinkItemProvider != null) oscarProceduralLinkItemProvider.dispose();
 	}
 
 }

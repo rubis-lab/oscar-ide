@@ -1,22 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="oscar" nsURI="rubis.snu.ac.kr" nsPrefix="oscar">
-  <eClassifiers xsi:type="ecore:EClass" name="ModuleInput">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OSCARContainer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
+        eType="#//OSCARNode" containment="true" eOpposite="#//OSCARNode/container"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ModuleOutput">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OSCARObjectProcessDiagram" eSuperTypes="#//OSCARContainer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="links" upperBound="-1"
+        eType="#//OSCARLink" containment="true" eOpposite="#//OSCARLink/opd"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Module">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OSCARNode" eSuperTypes="#//OSCARContainer">
+    <eOperations name="getPublish" ordered="false" upperBound="-1" eType="#//OSCARLink"/>
+    <eOperations name="getSubscribe" ordered="false" upperBound="-1" eType="#//OSCARLink"/>
+    <eOperations name="getOpd" eType="#//OSCARObjectProcessDiagram"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="publishMSG" upperBound="-1"
+        eType="#//OSCARLink" eOpposite="#//OSCARLink/source"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subscribeMSG" upperBound="-1"
+        eType="#//OSCARLink" eOpposite="#//OSCARLink/target"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="#//OSCARContainer"
+        eOpposite="#//OSCARContainer/nodes"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraints" eType="#//Rectangle"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Publish">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OSCARThing" eSuperTypes="#//OSCARNode">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="msg" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="msg_type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Subscribe">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Node" eSuperTypes="#//OSCARThing"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Topic" eSuperTypes="#//OSCARThing"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OSCARLink">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="opd" eType="#//OSCARObjectProcessDiagram"
+        eOpposite="#//OSCARObjectProcessDiagram/links"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//OSCARNode"
+        eOpposite="#//OSCARNode/publishMSG"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//OSCARNode"
+        eOpposite="#//OSCARNode/subscribeMSG"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bendpoints" upperBound="-1"
+        eType="#//Point"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="routerKind" eType="#//OSCARLinkRouterKind"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Topic">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OSCARProceduralLink" eSuperTypes="#//OSCARLink">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//OSCARProceduralLinkKind"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="OSCARProceduralLinkKind">
+    <eLiterals name="PublishSubscribe"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="OSCARLinkRouterKind">
+    <eLiterals name="BENDPOINT"/>
+    <eLiterals name="MANHATTAN" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Point" instanceClassName="org.eclipse.draw2d.geometry.Point"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Rectangle" instanceClassName="org.eclipse.draw2d.geometry.Rectangle"/>
 </ecore:EPackage>

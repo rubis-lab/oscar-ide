@@ -13,7 +13,7 @@
           </children>
           <children xsi:type="basic:PartSashContainer" xmi:id="_QtUegOD2EeiZnIgQtE9QVg" elementId="" containerData="10000" horizontal="true">
             <children xsi:type="basic:PartSashContainer" xmi:id="_g85EcOD2EeiZnIgQtE9QVg" elementId="" containerData="10000">
-              <children xsi:type="advanced:Placeholder" xmi:id="_l_2A8OD2EeiZnIgQtE9QVg" elementId="org.eclipse.ui.editorss" ref="_Bm7GIOEBEeija9sMNaPm0A"/>
+              <children xsi:type="advanced:Placeholder" xmi:id="_l_2A8OD2EeiZnIgQtE9QVg" elementId="org.eclipse.ui.editorss" ref="_Vgeg8OD1EeiZnIgQtE9QVg"/>
               <children xsi:type="basic:PartStack" xmi:id="_uqQMUOD2EeiZnIgQtE9QVg" elementId="">
                 <children xsi:type="advanced:Placeholder" xmi:id="_wBH4oOD2EeiZnIgQtE9QVg" elementId="org.eclipse.ui.console.ConsoleView" ref="_XFORMOD1EeiZnIgQtE9QVg"/>
               </children>
@@ -71,7 +71,11 @@
       <toolbar xmi:id="_Z3HKAOD1EeiZnIgQtE9QVg" elementId="org.eclipse.ui.console.ConsoleView"/>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_Bm7GIOEBEeija9sMNaPm0A" elementId="org.rubis.oscar.rcp.part.oscargraphicaleditorpart" contributionURI="bundleclass://org.rubis.oscar.rcp/org.rubis.oscar.rcp.gef.editor.OSCARGraphicalEditor" label="OSCAR Graphical Editor Part"/>
-    <trimBars xmi:id="_ISwicOD1EeiZnIgQtE9QVg" elementId="org.rubis.oscar.rcp.trimbar.0"/>
+    <trimBars xmi:id="_ISwicOD1EeiZnIgQtE9QVg" elementId="org.rubis.oscar.rcp.trimbar.0">
+      <children xsi:type="menu:ToolBar" xmi:id="_A09PcOv-EeippYOpUBSE1Q" elementId="toolbar:org.eclipse.ui.main.toolbar">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_E-7VgOv-EeippYOpUBSE1Q" elementId=""/>
+      </children>
+    </trimBars>
     <trimBars xmi:id="_InJeEOD1EeiZnIgQtE9QVg" elementId="org.eclipse.ui.trim.status" side="Bottom">
       <children xsi:type="menu:ToolControl" xmi:id="_LMr88OD1EeiZnIgQtE9QVg" elementId="org.eclipse.ui.StatusLine" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.StandardTrim"/>
       <children xsi:type="menu:ToolControl" xmi:id="_LfrxcOD1EeiZnIgQtE9QVg" elementId="org.eclipse.ui.HeapStatus" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.StandardTrim"/>

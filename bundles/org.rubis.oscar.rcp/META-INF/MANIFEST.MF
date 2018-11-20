@@ -23,7 +23,17 @@ Require-Bundle: javax.inject;bundle-version="0.0.0",
  org.rubis.oscar.oscarcore.model;bundle-version="0.1.0",
  org.eclipse.core.databinding;bundle-version="1.6.100",
  org.rubis.oscar.ftp;bundle-version="1.0.0",
- org.rubis.oscar.xml2ros;bundle-version="1.0.0"
+ org.rubis.oscar.xml2ros;bundle-version="1.0.0",
+ org.eclipse.equinox.ds;bundle-version="1.5.0",
+ org.eclipse.ui.ide.application;bundle-version="1.2.0",
+ org.eclipse.equinox.event;bundle-version="1.4.0",
+ org.eclipse.mylyn.tasks.ui;bundle-version="3.23.1",
+ org.eclipse.ui.views.log;bundle-version="1.2.100",
+ org.eclipse.e4.tools.emf.ui;bundle-version="4.5.200",
+ org.eclipse.emf.edit;bundle-version="2.12.0",
+ org.eclipse.emf.edit.ui;bundle-version="2.13.0",
+ org.rubis.oscar.oscarcore.model.edit;bundle-version="0.1.0",
+ org.eclipse.core.resources;bundle-version="3.12.0"
 Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

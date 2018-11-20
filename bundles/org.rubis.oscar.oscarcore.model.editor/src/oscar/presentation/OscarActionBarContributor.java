@@ -179,7 +179,8 @@ public class OscarActionBarContributor
 		super.contributeToMenu(menuManager);
 
 		IMenuManager submenuManager = new MenuManager(OscarEditorPlugin.INSTANCE.getString("_UI_OscarEditor_menu"), "oscarMenuID");
-		menuManager.insertAfter("additions", submenuManager);
+		//menuManager.insertAfter("additions", submenuManager);
+		menuManager.add(submenuManager);
 		submenuManager.add(new Separator("settings"));
 		submenuManager.add(new Separator("actions"));
 		submenuManager.add(new Separator("additions"));

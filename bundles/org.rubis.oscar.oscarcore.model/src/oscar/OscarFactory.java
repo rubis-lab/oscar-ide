@@ -22,49 +22,49 @@ public interface OscarFactory extends EFactory {
 	OscarFactory eINSTANCE = oscar.impl.OscarFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Module Input</em>'.
+	 * Returns a new object of class '<em>OSCAR Container</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Module Input</em>'.
+	 * @return a new object of class '<em>OSCAR Container</em>'.
 	 * @generated
 	 */
-	ModuleInput createModuleInput();
+	OSCARContainer createOSCARContainer();
 
 	/**
-	 * Returns a new object of class '<em>Module Output</em>'.
+	 * Returns a new object of class '<em>OSCAR Object Process Diagram</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Module Output</em>'.
+	 * @return a new object of class '<em>OSCAR Object Process Diagram</em>'.
 	 * @generated
 	 */
-	ModuleOutput createModuleOutput();
+	OSCARObjectProcessDiagram createOSCARObjectProcessDiagram();
 
 	/**
-	 * Returns a new object of class '<em>Module</em>'.
+	 * Returns a new object of class '<em>OSCAR Node</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Module</em>'.
+	 * @return a new object of class '<em>OSCAR Node</em>'.
 	 * @generated
 	 */
-	Module createModule();
+	OSCARNode createOSCARNode();
 
 	/**
-	 * Returns a new object of class '<em>Publish</em>'.
+	 * Returns a new object of class '<em>OSCAR Thing</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Publish</em>'.
+	 * @return a new object of class '<em>OSCAR Thing</em>'.
 	 * @generated
 	 */
-	Publish createPublish();
+	OSCARThing createOSCARThing();
 
 	/**
-	 * Returns a new object of class '<em>Subscribe</em>'.
+	 * Returns a new object of class '<em>Node</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Subscribe</em>'.
+	 * @return a new object of class '<em>Node</em>'.
 	 * @generated
 	 */
-	Subscribe createSubscribe();
+	Node createNode();
 
 	/**
 	 * Returns a new object of class '<em>Topic</em>'.
@@ -74,6 +74,24 @@ public interface OscarFactory extends EFactory {
 	 * @generated
 	 */
 	Topic createTopic();
+
+	/**
+	 * Returns a new object of class '<em>OSCAR Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>OSCAR Link</em>'.
+	 * @generated
+	 */
+	OSCARLink createOSCARLink();
+
+	/**
+	 * Returns a new object of class '<em>OSCAR Procedural Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>OSCAR Procedural Link</em>'.
+	 * @generated
+	 */
+	OSCARProceduralLink createOSCARProceduralLink();
 
 	/**
 	 * Returns the package supported by this factory.

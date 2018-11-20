@@ -31,6 +31,7 @@ public class OscarAllTests extends TestSuite {
 	 */
 	public static Test suite() {
 		TestSuite suite = new OscarAllTests("Oscar Tests");
+		suite.addTest(OscarTests.suite());
 		return suite;
 	}
 

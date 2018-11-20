@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.rubis.oscar.oscarcore.model.edit;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: oscar.provider.OscarEditPlugin$Implementation
 Bundle-Vendor: %providerName
@@ -11,5 +11,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: oscar.provider
 Require-Bundle: org.eclipse.core.runtime,
  org.rubis.oscar.oscarcore.model;visibility:=reexport,
- org.eclipse.emf.edit;visibility:=reexport
+ org.eclipse.emf.edit;visibility:=reexport,
+ org.eclipse.draw2d;bundle-version="3.10.100"
 Bundle-ActivationPolicy: lazy

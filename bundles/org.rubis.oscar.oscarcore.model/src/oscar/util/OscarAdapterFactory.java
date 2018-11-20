@@ -68,28 +68,36 @@ public class OscarAdapterFactory extends AdapterFactoryImpl {
 	protected OscarSwitch<Adapter> modelSwitch =
 		new OscarSwitch<Adapter>() {
 			@Override
-			public Adapter caseModuleInput(ModuleInput object) {
-				return createModuleInputAdapter();
+			public Adapter caseOSCARContainer(OSCARContainer object) {
+				return createOSCARContainerAdapter();
 			}
 			@Override
-			public Adapter caseModuleOutput(ModuleOutput object) {
-				return createModuleOutputAdapter();
+			public Adapter caseOSCARObjectProcessDiagram(OSCARObjectProcessDiagram object) {
+				return createOSCARObjectProcessDiagramAdapter();
 			}
 			@Override
-			public Adapter caseModule(Module object) {
-				return createModuleAdapter();
+			public Adapter caseOSCARNode(OSCARNode object) {
+				return createOSCARNodeAdapter();
 			}
 			@Override
-			public Adapter casePublish(Publish object) {
-				return createPublishAdapter();
+			public Adapter caseOSCARThing(OSCARThing object) {
+				return createOSCARThingAdapter();
 			}
 			@Override
-			public Adapter caseSubscribe(Subscribe object) {
-				return createSubscribeAdapter();
+			public Adapter caseNode(Node object) {
+				return createNodeAdapter();
 			}
 			@Override
 			public Adapter caseTopic(Topic object) {
 				return createTopicAdapter();
+			}
+			@Override
+			public Adapter caseOSCARLink(OSCARLink object) {
+				return createOSCARLinkAdapter();
+			}
+			@Override
+			public Adapter caseOSCARProceduralLink(OSCARProceduralLink object) {
+				return createOSCARProceduralLinkAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -112,72 +120,72 @@ public class OscarAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link oscar.ModuleInput <em>Module Input</em>}'.
+	 * Creates a new adapter for an object of class '{@link oscar.OSCARContainer <em>OSCAR Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see oscar.ModuleInput
+	 * @see oscar.OSCARContainer
 	 * @generated
 	 */
-	public Adapter createModuleInputAdapter() {
+	public Adapter createOSCARContainerAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link oscar.ModuleOutput <em>Module Output</em>}'.
+	 * Creates a new adapter for an object of class '{@link oscar.OSCARObjectProcessDiagram <em>OSCAR Object Process Diagram</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see oscar.ModuleOutput
+	 * @see oscar.OSCARObjectProcessDiagram
 	 * @generated
 	 */
-	public Adapter createModuleOutputAdapter() {
+	public Adapter createOSCARObjectProcessDiagramAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link oscar.Module <em>Module</em>}'.
+	 * Creates a new adapter for an object of class '{@link oscar.OSCARNode <em>OSCAR Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see oscar.Module
+	 * @see oscar.OSCARNode
 	 * @generated
 	 */
-	public Adapter createModuleAdapter() {
+	public Adapter createOSCARNodeAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link oscar.Publish <em>Publish</em>}'.
+	 * Creates a new adapter for an object of class '{@link oscar.OSCARThing <em>OSCAR Thing</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see oscar.Publish
+	 * @see oscar.OSCARThing
 	 * @generated
 	 */
-	public Adapter createPublishAdapter() {
+	public Adapter createOSCARThingAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link oscar.Subscribe <em>Subscribe</em>}'.
+	 * Creates a new adapter for an object of class '{@link oscar.Node <em>Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see oscar.Subscribe
+	 * @see oscar.Node
 	 * @generated
 	 */
-	public Adapter createSubscribeAdapter() {
+	public Adapter createNodeAdapter() {
 		return null;
 	}
 
@@ -192,6 +200,34 @@ public class OscarAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTopicAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link oscar.OSCARLink <em>OSCAR Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see oscar.OSCARLink
+	 * @generated
+	 */
+	public Adapter createOSCARLinkAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link oscar.OSCARProceduralLink <em>OSCAR Procedural Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see oscar.OSCARProceduralLink
+	 * @generated
+	 */
+	public Adapter createOSCARProceduralLinkAdapter() {
 		return null;
 	}
 

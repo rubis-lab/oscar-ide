@@ -16,11 +16,12 @@ Contributors:
     <version>0.1.0-SNAPSHOT</version>
     <artifactId>org.rubis.oscar.oscarcore.model</artifactId>
     <packaging>eclipse-plugin</packaging>
-    <name>OSCAR Core EMf Model</name>
+    <name>OSCAR Core EMF Model</name>
 
     <parent>
         <version>1.0.0-SNAPSHOT</version>
         <groupId>org.rubis.oscar</groupId>
         <artifactId>org.rubis.oscar.bundles</artifactId>
     </parent>
+
 </project>

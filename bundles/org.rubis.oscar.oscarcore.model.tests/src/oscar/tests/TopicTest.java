@@ -2,8 +2,6 @@
  */
 package oscar.tests;
 
-import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 import oscar.OscarFactory;
@@ -15,15 +13,7 @@ import oscar.Topic;
  * <!-- end-user-doc -->
  * @generated
  */
-public class TopicTest extends TestCase {
-
-	/**
-	 * The fixture for this Topic test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Topic fixture = null;
+public class TopicTest extends OSCARThingTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -45,23 +35,14 @@ public class TopicTest extends TestCase {
 	}
 
 	/**
-	 * Sets the fixture for this Topic test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void setFixture(Topic fixture) {
-		this.fixture = fixture;
-	}
-
-	/**
 	 * Returns the fixture for this Topic test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected Topic getFixture() {
-		return fixture;
+		return (Topic)fixture;
 	}
 
 	/**

@@ -2,19 +2,30 @@
  */
 package oscar.impl;
 
+import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.Rectangle;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import oscar.Module;
-import oscar.ModuleInput;
-import oscar.ModuleOutput;
+import oscar.Node;
+import oscar.OSCARContainer;
+import oscar.OSCARLink;
+import oscar.OSCARLinkRouterKind;
+import oscar.OSCARNode;
+import oscar.OSCARObjectProcessDiagram;
+import oscar.OSCARProceduralLink;
+import oscar.OSCARProceduralLinkKind;
+import oscar.OSCARThing;
 import oscar.OscarFactory;
 import oscar.OscarPackage;
-import oscar.Publish;
-import oscar.Subscribe;
 import oscar.Topic;
 
 /**
@@ -29,35 +40,35 @@ public class OscarPackageImpl extends EPackageImpl implements OscarPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass moduleInputEClass = null;
+	private EClass oscarContainerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass moduleOutputEClass = null;
+	private EClass oscarObjectProcessDiagramEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass moduleEClass = null;
+	private EClass oscarNodeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass publishEClass = null;
+	private EClass oscarThingEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass subscribeEClass = null;
+	private EClass nodeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -65,6 +76,48 @@ public class OscarPackageImpl extends EPackageImpl implements OscarPackage {
 	 * @generated
 	 */
 	private EClass topicEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass oscarLinkEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass oscarProceduralLinkEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum oscarProceduralLinkKindEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum oscarLinkRouterKindEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType pointEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType rectangleEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -132,8 +185,8 @@ public class OscarPackageImpl extends EPackageImpl implements OscarPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getModuleInput() {
-		return moduleInputEClass;
+	public EClass getOSCARContainer() {
+		return oscarContainerEClass;
 	}
 
 	/**
@@ -141,8 +194,8 @@ public class OscarPackageImpl extends EPackageImpl implements OscarPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getModuleInput_Name() {
-		return (EAttribute)moduleInputEClass.getEStructuralFeatures().get(0);
+	public EReference getOSCARContainer_Nodes() {
+		return (EReference)oscarContainerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -150,8 +203,8 @@ public class OscarPackageImpl extends EPackageImpl implements OscarPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getModuleOutput() {
-		return moduleOutputEClass;
+	public EClass getOSCARObjectProcessDiagram() {
+		return oscarObjectProcessDiagramEClass;
 	}
 
 	/**
@@ -159,8 +212,8 @@ public class OscarPackageImpl extends EPackageImpl implements OscarPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getModuleOutput_Name() {
-		return (EAttribute)moduleOutputEClass.getEStructuralFeatures().get(0);
+	public EReference getOSCARObjectProcessDiagram_Links() {
+		return (EReference)oscarObjectProcessDiagramEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -168,8 +221,8 @@ public class OscarPackageImpl extends EPackageImpl implements OscarPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getModule() {
-		return moduleEClass;
+	public EClass getOSCARNode() {
+		return oscarNodeEClass;
 	}
 
 	/**
@@ -177,8 +230,8 @@ public class OscarPackageImpl extends EPackageImpl implements OscarPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getModule_Name() {
-		return (EAttribute)moduleEClass.getEStructuralFeatures().get(0);
+	public EReference getOSCARNode_PublishMSG() {
+		return (EReference)oscarNodeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -186,8 +239,8 @@ public class OscarPackageImpl extends EPackageImpl implements OscarPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getPublish() {
-		return publishEClass;
+	public EReference getOSCARNode_SubscribeMSG() {
+		return (EReference)oscarNodeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -195,8 +248,8 @@ public class OscarPackageImpl extends EPackageImpl implements OscarPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPublish_Name() {
-		return (EAttribute)publishEClass.getEStructuralFeatures().get(0);
+	public EReference getOSCARNode_Container() {
+		return (EReference)oscarNodeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -204,8 +257,8 @@ public class OscarPackageImpl extends EPackageImpl implements OscarPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSubscribe() {
-		return subscribeEClass;
+	public EAttribute getOSCARNode_Constraints() {
+		return (EAttribute)oscarNodeEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -213,8 +266,71 @@ public class OscarPackageImpl extends EPackageImpl implements OscarPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSubscribe_Name() {
-		return (EAttribute)subscribeEClass.getEStructuralFeatures().get(0);
+	public EOperation getOSCARNode__GetPublish() {
+		return oscarNodeEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getOSCARNode__GetSubscribe() {
+		return oscarNodeEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getOSCARNode__GetOpd() {
+		return oscarNodeEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getOSCARThing() {
+		return oscarThingEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOSCARThing_Name() {
+		return (EAttribute)oscarThingEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOSCARThing_Msg() {
+		return (EAttribute)oscarThingEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOSCARThing_Msg_type() {
+		return (EAttribute)oscarThingEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getNode() {
+		return nodeEClass;
 	}
 
 	/**
@@ -231,8 +347,107 @@ public class OscarPackageImpl extends EPackageImpl implements OscarPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTopic_Name() {
-		return (EAttribute)topicEClass.getEStructuralFeatures().get(0);
+	public EClass getOSCARLink() {
+		return oscarLinkEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOSCARLink_Opd() {
+		return (EReference)oscarLinkEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOSCARLink_Source() {
+		return (EReference)oscarLinkEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOSCARLink_Target() {
+		return (EReference)oscarLinkEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOSCARLink_Bendpoints() {
+		return (EAttribute)oscarLinkEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOSCARLink_RouterKind() {
+		return (EAttribute)oscarLinkEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getOSCARProceduralLink() {
+		return oscarProceduralLinkEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOSCARProceduralLink_Kind() {
+		return (EAttribute)oscarProceduralLinkEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getOSCARProceduralLinkKind() {
+		return oscarProceduralLinkKindEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getOSCARLinkRouterKind() {
+		return oscarLinkRouterKindEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getPoint() {
+		return pointEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getRectangle() {
+		return rectangleEDataType;
 	}
 
 	/**
@@ -263,23 +478,47 @@ public class OscarPackageImpl extends EPackageImpl implements OscarPackage {
 		isCreated = true;
 
 		// Create classes and their features
-		moduleInputEClass = createEClass(MODULE_INPUT);
-		createEAttribute(moduleInputEClass, MODULE_INPUT__NAME);
+		oscarContainerEClass = createEClass(OSCAR_CONTAINER);
+		createEReference(oscarContainerEClass, OSCAR_CONTAINER__NODES);
 
-		moduleOutputEClass = createEClass(MODULE_OUTPUT);
-		createEAttribute(moduleOutputEClass, MODULE_OUTPUT__NAME);
+		oscarObjectProcessDiagramEClass = createEClass(OSCAR_OBJECT_PROCESS_DIAGRAM);
+		createEReference(oscarObjectProcessDiagramEClass, OSCAR_OBJECT_PROCESS_DIAGRAM__LINKS);
 
-		moduleEClass = createEClass(MODULE);
-		createEAttribute(moduleEClass, MODULE__NAME);
+		oscarNodeEClass = createEClass(OSCAR_NODE);
+		createEReference(oscarNodeEClass, OSCAR_NODE__PUBLISH_MSG);
+		createEReference(oscarNodeEClass, OSCAR_NODE__SUBSCRIBE_MSG);
+		createEReference(oscarNodeEClass, OSCAR_NODE__CONTAINER);
+		createEAttribute(oscarNodeEClass, OSCAR_NODE__CONSTRAINTS);
+		createEOperation(oscarNodeEClass, OSCAR_NODE___GET_PUBLISH);
+		createEOperation(oscarNodeEClass, OSCAR_NODE___GET_SUBSCRIBE);
+		createEOperation(oscarNodeEClass, OSCAR_NODE___GET_OPD);
 
-		publishEClass = createEClass(PUBLISH);
-		createEAttribute(publishEClass, PUBLISH__NAME);
+		oscarThingEClass = createEClass(OSCAR_THING);
+		createEAttribute(oscarThingEClass, OSCAR_THING__NAME);
+		createEAttribute(oscarThingEClass, OSCAR_THING__MSG);
+		createEAttribute(oscarThingEClass, OSCAR_THING__MSG_TYPE);
 
-		subscribeEClass = createEClass(SUBSCRIBE);
-		createEAttribute(subscribeEClass, SUBSCRIBE__NAME);
+		nodeEClass = createEClass(NODE);
 
 		topicEClass = createEClass(TOPIC);
-		createEAttribute(topicEClass, TOPIC__NAME);
+
+		oscarLinkEClass = createEClass(OSCAR_LINK);
+		createEReference(oscarLinkEClass, OSCAR_LINK__OPD);
+		createEReference(oscarLinkEClass, OSCAR_LINK__SOURCE);
+		createEReference(oscarLinkEClass, OSCAR_LINK__TARGET);
+		createEAttribute(oscarLinkEClass, OSCAR_LINK__BENDPOINTS);
+		createEAttribute(oscarLinkEClass, OSCAR_LINK__ROUTER_KIND);
+
+		oscarProceduralLinkEClass = createEClass(OSCAR_PROCEDURAL_LINK);
+		createEAttribute(oscarProceduralLinkEClass, OSCAR_PROCEDURAL_LINK__KIND);
+
+		// Create enums
+		oscarProceduralLinkKindEEnum = createEEnum(OSCAR_PROCEDURAL_LINK_KIND);
+		oscarLinkRouterKindEEnum = createEEnum(OSCAR_LINK_ROUTER_KIND);
+
+		// Create data types
+		pointEDataType = createEDataType(POINT);
+		rectangleEDataType = createEDataType(RECTANGLE);
 	}
 
 	/**
@@ -310,25 +549,62 @@ public class OscarPackageImpl extends EPackageImpl implements OscarPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		oscarObjectProcessDiagramEClass.getESuperTypes().add(this.getOSCARContainer());
+		oscarNodeEClass.getESuperTypes().add(this.getOSCARContainer());
+		oscarThingEClass.getESuperTypes().add(this.getOSCARNode());
+		nodeEClass.getESuperTypes().add(this.getOSCARThing());
+		topicEClass.getESuperTypes().add(this.getOSCARThing());
+		oscarProceduralLinkEClass.getESuperTypes().add(this.getOSCARLink());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(moduleInputEClass, ModuleInput.class, "ModuleInput", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getModuleInput_Name(), ecorePackage.getEString(), "Name", null, 0, 1, ModuleInput.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(oscarContainerEClass, OSCARContainer.class, "OSCARContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOSCARContainer_Nodes(), this.getOSCARNode(), this.getOSCARNode_Container(), "nodes", null, 0, -1, OSCARContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(moduleOutputEClass, ModuleOutput.class, "ModuleOutput", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getModuleOutput_Name(), ecorePackage.getEString(), "Name", null, 0, 1, ModuleOutput.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(oscarObjectProcessDiagramEClass, OSCARObjectProcessDiagram.class, "OSCARObjectProcessDiagram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOSCARObjectProcessDiagram_Links(), this.getOSCARLink(), this.getOSCARLink_Opd(), "links", null, 0, -1, OSCARObjectProcessDiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(moduleEClass, Module.class, "Module", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getModule_Name(), ecorePackage.getEString(), "Name", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(oscarNodeEClass, OSCARNode.class, "OSCARNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOSCARNode_PublishMSG(), this.getOSCARLink(), this.getOSCARLink_Source(), "publishMSG", null, 0, -1, OSCARNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOSCARNode_SubscribeMSG(), this.getOSCARLink(), this.getOSCARLink_Target(), "subscribeMSG", null, 0, -1, OSCARNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOSCARNode_Container(), this.getOSCARContainer(), this.getOSCARContainer_Nodes(), "container", null, 0, 1, OSCARNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOSCARNode_Constraints(), this.getRectangle(), "constraints", null, 0, 1, OSCARNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(publishEClass, Publish.class, "Publish", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPublish_Name(), ecorePackage.getEString(), "Name", null, 0, 1, Publish.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEOperation(getOSCARNode__GetPublish(), this.getOSCARLink(), "getPublish", 0, -1, IS_UNIQUE, !IS_ORDERED);
 
-		initEClass(subscribeEClass, Subscribe.class, "Subscribe", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSubscribe_Name(), ecorePackage.getEString(), "Name", null, 0, 1, Subscribe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEOperation(getOSCARNode__GetSubscribe(), this.getOSCARLink(), "getSubscribe", 0, -1, IS_UNIQUE, !IS_ORDERED);
+
+		initEOperation(getOSCARNode__GetOpd(), this.getOSCARObjectProcessDiagram(), "getOpd", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(oscarThingEClass, OSCARThing.class, "OSCARThing", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOSCARThing_Name(), ecorePackage.getEString(), "name", "", 0, 1, OSCARThing.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOSCARThing_Msg(), ecorePackage.getEString(), "msg", null, 0, 1, OSCARThing.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOSCARThing_Msg_type(), ecorePackage.getEString(), "msg_type", null, 0, 1, OSCARThing.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(nodeEClass, Node.class, "Node", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(topicEClass, Topic.class, "Topic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTopic_Name(), ecorePackage.getEString(), "Name", null, 0, 1, Topic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(oscarLinkEClass, OSCARLink.class, "OSCARLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOSCARLink_Opd(), this.getOSCARObjectProcessDiagram(), this.getOSCARObjectProcessDiagram_Links(), "opd", null, 0, 1, OSCARLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOSCARLink_Source(), this.getOSCARNode(), this.getOSCARNode_PublishMSG(), "source", null, 0, 1, OSCARLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOSCARLink_Target(), this.getOSCARNode(), this.getOSCARNode_SubscribeMSG(), "target", null, 0, 1, OSCARLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOSCARLink_Bendpoints(), this.getPoint(), "bendpoints", null, 0, -1, OSCARLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOSCARLink_RouterKind(), this.getOSCARLinkRouterKind(), "routerKind", null, 0, 1, OSCARLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(oscarProceduralLinkEClass, OSCARProceduralLink.class, "OSCARProceduralLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOSCARProceduralLink_Kind(), this.getOSCARProceduralLinkKind(), "kind", null, 0, 1, OSCARProceduralLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(oscarProceduralLinkKindEEnum, OSCARProceduralLinkKind.class, "OSCARProceduralLinkKind");
+		addEEnumLiteral(oscarProceduralLinkKindEEnum, OSCARProceduralLinkKind.PUBLISH_SUBSCRIBE);
+
+		initEEnum(oscarLinkRouterKindEEnum, OSCARLinkRouterKind.class, "OSCARLinkRouterKind");
+		addEEnumLiteral(oscarLinkRouterKindEEnum, OSCARLinkRouterKind.BENDPOINT);
+		addEEnumLiteral(oscarLinkRouterKindEEnum, OSCARLinkRouterKind.MANHATTAN);
+
+		// Initialize data types
+		initEDataType(pointEDataType, Point.class, "Point", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(rectangleEDataType, Rectangle.class, "Rectangle", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

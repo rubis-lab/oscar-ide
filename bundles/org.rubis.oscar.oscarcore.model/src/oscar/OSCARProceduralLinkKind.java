@@ -1,0 +1,187 @@
+/**
+ */
+package oscar;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import org.eclipse.emf.common.util.Enumerator;
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the literals of the enumeration '<em><b>OSCAR Procedural Link Kind</b></em>',
+ * and utility methods for working with them.
+ * <!-- end-user-doc -->
+ * @see oscar.OscarPackage#getOSCARProceduralLinkKind()
+ * @model
+ * @generated
+ */
+public enum OSCARProceduralLinkKind implements Enumerator {
+	/**
+	 * The '<em><b>Publish Subscribe</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PUBLISH_SUBSCRIBE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	PUBLISH_SUBSCRIBE(0, "PublishSubscribe", "PublishSubscribe");
+
+	/**
+	 * The '<em><b>Publish Subscribe</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Publish Subscribe</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #PUBLISH_SUBSCRIBE
+	 * @model name="PublishSubscribe"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PUBLISH_SUBSCRIBE_VALUE = 0;
+
+	/**
+	 * An array of all the '<em><b>OSCAR Procedural Link Kind</b></em>' enumerators.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private static final OSCARProceduralLinkKind[] VALUES_ARRAY =
+		new OSCARProceduralLinkKind[] {
+			PUBLISH_SUBSCRIBE,
+		};
+
+	/**
+	 * A public read-only list of all the '<em><b>OSCAR Procedural Link Kind</b></em>' enumerators.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final List<OSCARProceduralLinkKind> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+
+	/**
+	 * Returns the '<em><b>OSCAR Procedural Link Kind</b></em>' literal with the specified literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
+	 * @generated
+	 */
+	public static OSCARProceduralLinkKind get(String literal) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			OSCARProceduralLinkKind result = VALUES_ARRAY[i];
+			if (result.toString().equals(literal)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>OSCAR Procedural Link Kind</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
+	 * @generated
+	 */
+	public static OSCARProceduralLinkKind getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			OSCARProceduralLinkKind result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>OSCAR Procedural Link Kind</b></em>' literal with the specified integer value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
+	 * @generated
+	 */
+	public static OSCARProceduralLinkKind get(int value) {
+		switch (value) {
+			case PUBLISH_SUBSCRIBE_VALUE: return PUBLISH_SUBSCRIBE;
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
+
+	/**
+	 * Only this class can construct instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private OSCARProceduralLinkKind(int value, String name, String literal) {
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+	
+} //OSCARProceduralLinkKind

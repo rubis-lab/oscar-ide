@@ -2,7 +2,11 @@
  */
 package oscar.impl;
 
+import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.Rectangle;
+
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -56,12 +60,14 @@ public class OscarFactoryImpl extends EFactoryImpl implements OscarFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case OscarPackage.MODULE_INPUT: return createModuleInput();
-			case OscarPackage.MODULE_OUTPUT: return createModuleOutput();
-			case OscarPackage.MODULE: return createModule();
-			case OscarPackage.PUBLISH: return createPublish();
-			case OscarPackage.SUBSCRIBE: return createSubscribe();
+			case OscarPackage.OSCAR_CONTAINER: return createOSCARContainer();
+			case OscarPackage.OSCAR_OBJECT_PROCESS_DIAGRAM: return createOSCARObjectProcessDiagram();
+			case OscarPackage.OSCAR_NODE: return createOSCARNode();
+			case OscarPackage.OSCAR_THING: return createOSCARThing();
+			case OscarPackage.NODE: return createNode();
 			case OscarPackage.TOPIC: return createTopic();
+			case OscarPackage.OSCAR_LINK: return createOSCARLink();
+			case OscarPackage.OSCAR_PROCEDURAL_LINK: return createOSCARProceduralLink();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -72,9 +78,20 @@ public class OscarFactoryImpl extends EFactoryImpl implements OscarFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModuleInput createModuleInput() {
-		ModuleInputImpl moduleInput = new ModuleInputImpl();
-		return moduleInput;
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case OscarPackage.OSCAR_PROCEDURAL_LINK_KIND:
+				return createOSCARProceduralLinkKindFromString(eDataType, initialValue);
+			case OscarPackage.OSCAR_LINK_ROUTER_KIND:
+				return createOSCARLinkRouterKindFromString(eDataType, initialValue);
+			case OscarPackage.POINT:
+				return createPointFromString(eDataType, initialValue);
+			case OscarPackage.RECTANGLE:
+				return createRectangleFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
 	}
 
 	/**
@@ -82,9 +99,20 @@ public class OscarFactoryImpl extends EFactoryImpl implements OscarFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModuleOutput createModuleOutput() {
-		ModuleOutputImpl moduleOutput = new ModuleOutputImpl();
-		return moduleOutput;
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case OscarPackage.OSCAR_PROCEDURAL_LINK_KIND:
+				return convertOSCARProceduralLinkKindToString(eDataType, instanceValue);
+			case OscarPackage.OSCAR_LINK_ROUTER_KIND:
+				return convertOSCARLinkRouterKindToString(eDataType, instanceValue);
+			case OscarPackage.POINT:
+				return convertPointToString(eDataType, instanceValue);
+			case OscarPackage.RECTANGLE:
+				return convertRectangleToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
 	}
 
 	/**
@@ -92,9 +120,9 @@ public class OscarFactoryImpl extends EFactoryImpl implements OscarFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Module createModule() {
-		ModuleImpl module = new ModuleImpl();
-		return module;
+	public OSCARContainer createOSCARContainer() {
+		OSCARContainerImpl oscarContainer = new OSCARContainerImpl();
+		return oscarContainer;
 	}
 
 	/**
@@ -102,9 +130,9 @@ public class OscarFactoryImpl extends EFactoryImpl implements OscarFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Publish createPublish() {
-		PublishImpl publish = new PublishImpl();
-		return publish;
+	public OSCARObjectProcessDiagram createOSCARObjectProcessDiagram() {
+		OSCARObjectProcessDiagramImpl oscarObjectProcessDiagram = new OSCARObjectProcessDiagramImpl();
+		return oscarObjectProcessDiagram;
 	}
 
 	/**
@@ -112,9 +140,29 @@ public class OscarFactoryImpl extends EFactoryImpl implements OscarFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Subscribe createSubscribe() {
-		SubscribeImpl subscribe = new SubscribeImpl();
-		return subscribe;
+	public OSCARNode createOSCARNode() {
+		OSCARNodeImpl oscarNode = new OSCARNodeImpl();
+		return oscarNode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OSCARThing createOSCARThing() {
+		OSCARThingImpl oscarThing = new OSCARThingImpl();
+		return oscarThing;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Node createNode() {
+		NodeImpl node = new NodeImpl();
+		return node;
 	}
 
 	/**
@@ -125,6 +173,140 @@ public class OscarFactoryImpl extends EFactoryImpl implements OscarFactory {
 	public Topic createTopic() {
 		TopicImpl topic = new TopicImpl();
 		return topic;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OSCARLink createOSCARLink() {
+		OSCARLinkImpl oscarLink = new OSCARLinkImpl();
+		return oscarLink;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OSCARProceduralLink createOSCARProceduralLink() {
+		OSCARProceduralLinkImpl oscarProceduralLink = new OSCARProceduralLinkImpl();
+		return oscarProceduralLink;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OSCARProceduralLinkKind createOSCARProceduralLinkKindFromString(EDataType eDataType, String initialValue) {
+		OSCARProceduralLinkKind result = OSCARProceduralLinkKind.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertOSCARProceduralLinkKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OSCARLinkRouterKind createOSCARLinkRouterKindFromString(EDataType eDataType, String initialValue) {
+		OSCARLinkRouterKind result = OSCARLinkRouterKind.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertOSCARLinkRouterKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Point createPointFromString(EDataType eDataType, String initialValue) {
+		
+		if(initialValue == null) {
+			return null;
+		}
+		initialValue.replaceAll("\\s", "");
+		String[] values = initialValue.split(",");
+		if(values.length != 2) {
+			return null;
+		}
+		return new Point(Integer.parseInt(values[0]),Integer.parseInt(values[1]));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertPointToString(EDataType eDataType, Object instanceValue) {
+		
+		if(instanceValue == null){
+			return null;
+		}
+		Point point = (Point) instanceValue;
+		return point.x + "," + point.y;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Rectangle createRectangleFromString(EDataType eDataType, String initialValue) {
+		
+		if(initialValue == null) {
+			return null;
+		}
+		
+		initialValue.replaceAll("\\s", "");
+		String[] values = initialValue.split(",");
+		if(values.length != 4) {
+			return null;
+		}
+		
+		Rectangle rect = new Rectangle();
+		try {
+			rect.setLocation(Integer.parseInt(values[0]), Integer.parseInt(values[1]));
+			rect.setSize(Integer.parseInt(values[2]), Integer.parseInt(values[3]));
+		} catch (NumberFormatException e) {
+			EcorePlugin.INSTANCE.log(e);
+			rect = null;
+		}
+		return rect;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertRectangleToString(EDataType eDataType, Object instanceValue) {
+		
+		if(instanceValue == null) {
+		    return null;
+		  }
+		  Rectangle rect = (Rectangle) instanceValue;
+		  return rect.x+","+rect.y+","+rect.width+","+rect.height;
 	}
 
 	/**
