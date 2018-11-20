@@ -176,32 +176,13 @@ public class EditRunConfiguration{
 				}
 				
 				/* ROS --> FTP */
-				
-				/*
-				System.out.println("Start FTP Test");
-				try {
-					OSCARFTPClient oscarftp = new OSCARFTPClient(addressText.getText(), userText.getText(), passwordText.getText());
-					oscarftp.testOSCARFTP();
-				} catch(Exception e) {
-					e.printStackTrace();
-				}
-				System.out.println("End FTP Test");
-				
-				System.out.println("Start XML2ROS Test");
-					XML2ROS xr = new XML2ROS();
-					xr.testXML2ROS();
-					
-				System.out.println("End XML2ROS Test");
-				*/
+				//TODO: populate from form
 				/*
 				try {
-				OSCARFTPClient oscarftp = new OSCARFTPClient(addressText.getText(), userText.getText(), passwordText.getText()); 
-				oscarftp.uploadDirectory("C:\\", locationText.getText());
-				//oscarftp.OSCAR();
-				oscarftp.disconnect();
-				System.out.println("End");
-				} catch(Exception e) {					
-					// TODO Auto-generated catch block
+					OSCARFTPClient oscarftp = new OSCARFTPClient("ip", "id", "pw");
+					oscarftp.uploadDirectory("my_package", "/home/nvidia/my_package/");
+					oscarftp.disconnect();
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 				*/
