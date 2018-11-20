@@ -16,9 +16,12 @@ public class XML2ROS {
 	public XML2ROS() {
 		
 	}
-	
+	/*
     public static void main(String[] args) throws IOException
     {
+    */
+	public static void convert() throws IOException {
+		
         String sRate = getFirst("rate");
         Integer rate;
         if(sRate == null) rate = null;
@@ -217,6 +220,7 @@ public class XML2ROS {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder;
         File file = new File("data.xml");
+        
         Document document;
         try
         {

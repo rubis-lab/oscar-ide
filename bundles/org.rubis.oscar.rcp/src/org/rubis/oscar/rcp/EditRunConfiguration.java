@@ -157,15 +157,26 @@ public class EditRunConfiguration{
 		runButton.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent event) {
+				
+				/* OSCAR --> XML */
 				OSCAR2XML oscar2xml = new OSCAR2XML();
 				try {
-					//oscar2xml.convert("workspace" + File.separator + "My" + File.separator + "debugoutfromrcp.txt");
 					oscar2xml.preprocessXML("workspace" + File.separator + "My" + File.separator + "My.oscar");
 					oscar2xml.parseOSCAR();
 					oscar2xml.writeXML();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				
+				/* XML --> ROS */
+				try {
+					org.rubis.oscar.xml2ros.XML2ROS.convert();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				/* ROS --> FTP */
+				
 				/*
 				System.out.println("Start FTP Test");
 				try {
