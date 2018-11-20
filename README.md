@@ -51,12 +51,14 @@ Eclipse IDE for Eclipse Committers
 2. Create new project
    - Right-click in the Project Explorer view, and sellect `New -> Project`
    - Sellect `General -> Project` and click `Next`
-   - Type the `Project name` and click `Finish`
+   - Type the `Project name` with 'My' and click `Finish`
+   - (Currently we recommend naming the project as `My`)
 
 3. Create new model
    - Right-click on the project in the Project Explorer view, and sellect `New -> Other...`
    - Sellect `Example EMF Model Creation Wizards -> Oscar Model`
-   - Type the `File name` with `.oscar` extension
+   - Type the `File name` with `My.oscar` extension
+   - (Currently we recommend naming the file as `My.oscar`)
    - Under `Model Object` sellect `OSCAR Object Process Diagram`
    - Under `XML Encoding` sellect `UTF-8`
    - Click `Finish`
@@ -68,11 +70,15 @@ Eclipse IDE for Eclipse Committers
    - Enter propery values in the Properies view 
    - To create a link, sellect `Link` in the Palette view and click on two blocks you want to connect
 
-5. Save a model
-   - Press `Ctrl+S` and the XML file will be generated in the workspace in your project folder
+5. Generate XML file 
+   - Press `Run` menu on the top-left corner of IDE 
+   - Under the 'Run' menu select 'Run Configuration'
+   - Select 'Run' button
+   - Find data.xml file in the top level folder
 
 6. Generate skeleton ROS code (C++)
-
-7. Remote deployment via FTP
+   - Find my_package directory in the top level folder    
 
 8. Building and launching
+   - Copy contents of my_package to target device
+   - Run generated launchscripts under src/launch
