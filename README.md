@@ -49,26 +49,26 @@ Eclipse IDE for Eclipse Committers
    - Run `eclipse` executable 
 
 2. Create new project
-   - Right-click in the Project Explorer view, and sellect `New -> Project`
-   - Sellect `General -> Project` and click `Next`
+   - Right-click in the Project Explorer view, and select `New -> Project`
+   - Select `General -> Project` and click `Next`
    - Type the `Project name` starting with "My" and click `Finish`
    - (Currently we recommend naming the project starting with "My")
 
 3. Create new model
-   - Right-click on the project in the Project Explorer view, and sellect `New -> Other...`
-   - Sellect `Example EMF Model Creation Wizards -> Oscar Model`
+   - Right-click on the project in the Project Explorer view, and select `New -> Other...`
+   - Select `Example EMF Model Creation Wizards -> Oscar Model`
    - Type the `File name` with `My.oscar` extension
    - (Currently we recommend naming the file as `My.oscar`)
-   - Under `Model Object` sellect `OSCAR Object Process Diagram`
-   - Under `XML Encoding` sellect `UTF-8`
+   - Under `Model Object` select `OSCAR Object Process Diagram`
+   - Under `XML Encoding` select `UTF-8`
    - Click `Finish`
 
 4. Create new block diagram
-   - Right-click on the model in the Project Explorer view, and sellect `Open With -> OSCAR Editor`
-   - In the Palette view, sellect `Node` or `Topic`
+   - Right-click on the model in the Project Explorer view, and select `Open With -> OSCAR Editor`
+   - In the Palette view, select `Node` or `Topic`
    - Draw a block by clicking anywhere inside the OSCAR Editor area and dragging the cursor
-   - Enter propery values in the Properies view 
-   - To create a link, sellect `Link` in the Palette view and click on two blocks you want to connect
+   - Enter property values in the Properies view 
+   - To create a link, select `Link` in the Palette view and click on two blocks you want to connect
 
 5. Generate XML file & ROS skeleton code (C++)
    - Press `Run` menu on the top-left corner of IDE 
