@@ -51,8 +51,8 @@ Eclipse IDE for Eclipse Committers
 2. Create new project
    - Right-click in the Project Explorer view, and sellect `New -> Project`
    - Sellect `General -> Project` and click `Next`
-   - Type the `Project name` with 'My' and click `Finish`
-   - (Currently we recommend naming the project as `My`)
+   - Type the `Project name` starting with "My" and click `Finish`
+   - (Currently we recommend naming the project starting with "My")
 
 3. Create new model
    - Right-click on the project in the Project Explorer view, and sellect `New -> Other...`
@@ -70,15 +70,18 @@ Eclipse IDE for Eclipse Committers
    - Enter propery values in the Properies view 
    - To create a link, sellect `Link` in the Palette view and click on two blocks you want to connect
 
-5. Generate XML file 
+5. Generate XML file & ROS skeleton code (C++)
    - Press `Run` menu on the top-left corner of IDE 
-   - Under the 'Run' menu select 'Run Configuration'
-   - Select 'Run' button
-   - Find data.xml file in the top level folder
+   - Under the `Run` menu select `Run Configuration`
+   - Press `Run` button
+   - Find `data.xml` file in the top level folder
+   - Find skeleton code in `my_package/src` directory in the top level folder    
 
-6. Generate skeleton ROS code (C++)
-   - Find my_package directory in the top level folder    
+6. Transfer files to remote target
+   - Enter values for `Address`, `FTP Port`, `User`, `Password`, `Location`
+   - Press `Run`
+   
+7. Building and launching
+   - Find contents of `my_package` on the target device
+   - Run generated launch scripts from `my_package/src/launch`
 
-8. Building and launching
-   - Copy contents of my_package to target device
-   - Run generated launchscripts under src/launch
