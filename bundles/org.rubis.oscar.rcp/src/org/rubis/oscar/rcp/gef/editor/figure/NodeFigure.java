@@ -14,6 +14,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 public class NodeFigure extends OSCARThingFigure {
 	private Label nameLabel;
 	private RectangleFigure rectangle;
+	private Label typeLabel; 
 	private ConnectionAnchor connectionAnchor;
 	
 	public NodeFigure() {

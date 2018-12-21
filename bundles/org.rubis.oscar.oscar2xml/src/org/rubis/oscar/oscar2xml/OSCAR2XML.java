@@ -28,27 +28,24 @@ public class OSCAR2XML {
 		OSCARTopics = new ArrayList<OSCARTopic>();
 		OSCARLinks = new ArrayList<OSCARLink>();
 	}
-	/*
+	
 	public static void main(String[] args) throws Exception {
 		System.out.println("dd");
-		File debugFile = new File("debugout.txt");
-		debugFile.createNewFile();
+//		File debugFile = new File("debugout.txt");
+//		debugFile.createNewFile();
 		
 		OSCAR2XML oscar = new OSCAR2XML();
-		oscar.preprocessXML();
+		// oscar.preprocessXML("oscar.xml");
 		oscar.parseOSCAR();
 		oscar.writeXML();
-		
 	}
-*/
-	
 	
 	public void convert(String fileName) throws Exception {
 		//File debugFile = new File(fileName);
 		//debugFile.createNewFile();
 		
 		OSCAR2XML oscar = new OSCAR2XML();
-		oscar.preprocessXML(fileName);
+//		oscar.preprocessXML(fileName);
 		oscar.parseOSCAR();
 		oscar.writeXML();
 		
@@ -389,6 +386,7 @@ public class OSCAR2XML {
 	         DocumentBuilderFactory.newInstance();
 	         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 	         Document doc = dBuilder.newDocument();
+
 	         
 	         // root element
 	         Element rootElement = doc.createElement("data");
@@ -396,102 +394,157 @@ public class OSCAR2XML {
 	         
 	         // headers
 	         //TODO: package name from filename
-	         rootElement.appendChild(doc.createElement("packageName")
-	        		 .appendChild(doc.createTextNode("my_package")).getParentNode());
 	         
-	         rootElement.appendChild(doc.createElement("fileName")
-	        		 .appendChild(doc.createTextNode("main")).getParentNode());
+	         Element packageElement = doc.createElement("package");
+	         rootElement.appendChild(packageElement);
+
+	         packageElement.appendChild(makeNode(doc, "name", "my_package"));
+	         packageElement.appendChild(makeNode(doc, "version", "0.0.0"));
+	         packageElement.appendChild(makeNode(doc, "description", "Package Description"));
+	         packageElement.appendChild(makeNode(doc, "maintainer_name", "you"));
+	         packageElement.appendChild(makeNode(doc, "maintainer_email", "you@yourdomain.tld"));
+	         packageElement.appendChild(makeNode(doc, "license", "TODO"));
 	         
-	         rootElement.appendChild(doc.createElement("version")
-	        		 .appendChild(doc.createTextNode("0.0.0")).getParentNode());
-	         
-	         rootElement.appendChild(doc.createElement("description")
-	        		 .appendChild(doc.createTextNode("Package Description.")).getParentNode());
-	         
-	         rootElement.appendChild(doc.createElement("license")
-	        		 .appendChild(doc.createTextNode("no License")).getParentNode());
-	         
-	         rootElement.appendChild(doc.createElement("maintainerEmail")
-	        		 .appendChild(doc.createTextNode("chief@rubis.snu.ac.kr")).getParentNode());
-	         
-	         rootElement.appendChild(doc.createElement("maintainerName")
-	        		 .appendChild(doc.createTextNode("rubis")).getParentNode());
-	         
-	         rootElement.appendChild(doc.createElement("indentation")
-	        		 .appendChild(doc.createTextNode("tabs")).getParentNode());
-	         
-	         rootElement.appendChild(doc.createElement("rosHeader")
-	        		 .appendChild(doc.createTextNode("ros/ros.h")).getParentNode());
-	         
-	        
-	         // nodes
-	         Element nodes = doc.createElement("nodes");
-	         rootElement.appendChild(nodes);
-	         
-	         // node
+	         // Nodes
 	         for(int i = 0; i < OSCARNodes.size(); i++) {
-	        	 System.out.println(OSCARNodes.get(i).toString());
+	        	 Element nodeElement = doc.createElement("node");
+	        	 OSCARNode oscar_node = OSCARNodes.get(i);
 	        	 
-	        	 Element node = doc.createElement("node");
+	        	 nodeElement.appendChild(makeNode(doc, "name", oscar_node.getName()));
 	        	 
-	        	 // name
-	        	 node.appendChild(doc.createElement("name")
-		        		 .appendChild(doc.createTextNode(OSCARNodes.get(i).getName())).getParentNode());
+	        	 ArrayList<String> subscribe_list = oscar_node.getSubscribe();
+	        	 for(int j = 0; j < subscribe_list.size(); j++) {
+	        		 Element subElement = doc.createElement("sub");
+	        		 OSCARTopic subTopic = getSubscribedTopic(subscribe_list.get(j));
+	        		 
+	        		 subElement.appendChild(makeNode(doc, "name", subTopic.getName()));
+	        		 subElement.appendChild(makeNode(doc, "topic", subTopic.getName()));
+	        		 subElement.appendChild(makeNode(doc, "msg", subTopic.getMsg()));
+	        		 subElement.appendChild(makeNode(doc, "type", subTopic.getMsgType()));
+	        		 subElement.appendChild(makeNode(doc, "queue_size", "1"));
+	        		 subElement.appendChild(makeNode(doc, "callback", "zedCallback"));
 	        	 
-	        	 //TODO: custom messages
-	        	 node.appendChild(doc.createElement("additional_msgs"));
-	        	 
-	        	 //TODO: headers
-	        	 node.appendChild(doc.createElement("headers"));
-	        	 
-	        	 // inputs
-	        	 Element inputs =  doc.createElement("inputs");
-	        	 ArrayList<String> subscribes = OSCARNodes.get(i).getSubscribe();
-	        	 for(int j = 0; j < subscribes.size(); j++) {
-	        		 Element in =  doc.createElement("in");
-	        		 OSCARTopic subTopic = getSubscribedTopic(subscribes.get(j));
-	        		 
-	        		 // topic name
-	        		 in.appendChild(doc.createElement("subscribeTo")
-	        				 .appendChild(doc.createTextNode(subTopic.getName())).getParentNode());
-	        		 
-	        		 // topic message type
-	        		 in.appendChild(doc.createElement("type")
-	        				 .appendChild(doc.createTextNode(subTopic.getMsgType())).getParentNode());
-	        		 
-	        		//TODO: input callBackFunction
-	        		 in.appendChild(doc.createElement("callBackFunction"));
-	        		 
-	        		 inputs.appendChild(in);
-	        	 }
-	        	 node.appendChild(inputs);
-	        	 
-	        	// outputs
-	        	 Element outputs =  doc.createElement("outputs");
-	        	 ArrayList<String> publishes = OSCARNodes.get(i).getPublish();
-	        	 for(int j = 0; j < publishes.size(); j++) {
-	        		 Element out =  doc.createElement("out");
-	        		 OSCARTopic pubTopic = getPublishedTopic(publishes.get(j));
-	        		 
-	        		 // topic name
-	        		 out.appendChild(doc.createElement("name")
-	        				 .appendChild(doc.createTextNode(pubTopic.getName())).getParentNode());
-	        		 
-	        		//TODO: input type
-	        		 out.appendChild(doc.createElement("type")
-	        				 .appendChild(doc.createTextNode(pubTopic.getMsgType())).getParentNode());
-	        		 
-	        		//TODO: input callBackFunction
-	        		 out.appendChild(doc.createElement("queueSize"));
-	        		 
-	        		 outputs.appendChild(out);
+	        		 nodeElement.appendChild(subElement);
 	        	 }
 	        	 
-	        	 node.appendChild(outputs);
-	        	 
-	        	 nodes.appendChild(node);
+	        	 ArrayList<String> publish_list = oscar_node.getPublish();
+	        	 for(int j = 0; j < publish_list.size(); j++) {
+	        		 Element pubElement = doc.createElement("pub");
+	        		 OSCARTopic pubTopic = getPublishedTopic(publish_list.get(j));
+	        		 
+	        		 pubElement.appendChild(makeNode(doc, "name", pubTopic.getName()));
+	        		 pubElement.appendChild(makeNode(doc, "topic", pubTopic.getName()));
+	        		 pubElement.appendChild(makeNode(doc, "msg", pubTopic.getMsg()));
+	        		 pubElement.appendChild(makeNode(doc, "type", pubTopic.getMsgType()));
+	        		 pubElement.appendChild(makeNode(doc, "queue_size", "5"));
+	        		 pubElement.appendChild(makeNode(doc, "callback", "zedCallback"));
+	        		 
+	        		 nodeElement.appendChild(pubElement);
+	        	 }
+	        	 packageElement.appendChild(nodeElement);
 	         }
 	         
+	         
+	         
+	         
+	         // -------------------------------------------
+	         
+	         
+//	         rootElement.appendChild(doc.createElement("packageName")
+//	        		 .appendChild(doc.createTextNode("my_package")).getParentNode());
+//	         
+//	         rootElement.appendChild(doc.createElement("fileName")
+//	        		 .appendChild(doc.createTextNode("main")).getParentNode());
+//	         
+//	         rootElement.appendChild(doc.createElement("version")
+//	        		 .appendChild(doc.createTextNode("0.0.0")).getParentNode());
+//	         
+//	         rootElement.appendChild(doc.createElement("description")
+//	        		 .appendChild(doc.createTextNode("Package Description.")).getParentNode());
+//	         
+//	         rootElement.appendChild(doc.createElement("license")
+//	        		 .appendChild(doc.createTextNode("no License")).getParentNode());
+//	         
+//	         rootElement.appendChild(doc.createElement("maintainerEmail")
+//	        		 .appendChild(doc.createTextNode("chief@rubis.snu.ac.kr")).getParentNode());
+//	         
+//	         rootElement.appendChild(doc.createElement("maintainerName")
+//	        		 .appendChild(doc.createTextNode("rubis")).getParentNode());
+//	         
+//	         rootElement.appendChild(doc.createElement("indentation")
+//	        		 .appendChild(doc.createTextNode("tabs")).getParentNode());
+//	         
+//	         rootElement.appendChild(doc.createElement("rosHeader")
+//	        		 .appendChild(doc.createTextNode("ros/ros.h")).getParentNode());
+//	         
+//	        
+//	         // nodes
+//	         Element nodes = doc.createElement("nodes");
+//	         rootElement.appendChild(nodes);
+//	         
+//	         // node
+//	         for(int i = 0; i < OSCARNodes.size(); i++) {
+//	        	 System.out.println(OSCARNodes.get(i).toString());
+//	        	 
+//	        	 Element node = doc.createElement("node");
+//	        	 
+//	        	 // name
+//	        	 node.appendChild(doc.createElement("name")
+//		        		 .appendChild(doc.createTextNode(OSCARNodes.get(i).getName())).getParentNode());
+//	        	 
+//	        	 //TODO: custom messages
+//	        	 node.appendChild(doc.createElement("additional_msgs"));
+//	        	 
+//	        	 //TODO: headers
+//	        	 node.appendChild(doc.createElement("headers"));
+//	        	 
+//	        	 // inputs
+//	        	 Element inputs =  doc.createElement("inputs");
+//	        	 ArrayList<String> subscribes = OSCARNodes.get(i).getSubscribe();
+//	        	 for(int j = 0; j < subscribes.size(); j++) {
+//	        		 Element in =  doc.createElement("in");
+//	        		 OSCARTopic subTopic = getSubscribedTopic(subscribes.get(j));
+//	        		 
+//	        		 // topic name
+//	        		 in.appendChild(doc.createElement("subscribeTo")
+//	        				 .appendChild(doc.createTextNode(subTopic.getName())).getParentNode());
+//	        		 
+//	        		 // topic message type
+//	        		 in.appendChild(doc.createElement("type")
+//	        				 .appendChild(doc.createTextNode(subTopic.getMsgType())).getParentNode());
+//	        		 
+//	        		//TODO: input callBackFunction
+//	        		 in.appendChild(doc.createElement("callBackFunction"));
+//	        		 
+//	        		 inputs.appendChild(in);
+//	        	 }
+//	        	 node.appendChild(inputs);
+//	        	 
+//	        	// outputs
+//	        	 Element outputs =  doc.createElement("outputs");
+//	        	 ArrayList<String> publishes = OSCARNodes.get(i).getPublish();
+//	        	 for(int j = 0; j < publishes.size(); j++) {
+//	        		 Element out =  doc.createElement("out");
+//	        		 OSCARTopic pubTopic = getPublishedTopic(publishes.get(j));
+//	        		 
+//	        		 // topic name
+//	        		 out.appendChild(doc.createElement("name")
+//	        				 .appendChild(doc.createTextNode(pubTopic.getName())).getParentNode());
+//	        		 
+//	        		//TODO: input type
+//	        		 out.appendChild(doc.createElement("type")
+//	        				 .appendChild(doc.createTextNode(pubTopic.getMsgType())).getParentNode());
+//	        		 
+//	        		//TODO: input callBackFunction
+//	        		 out.appendChild(doc.createElement("queueSize"));
+//	        		 
+//	        		 outputs.appendChild(out);
+//	        	 }
+//	        	 
+//	        	 node.appendChild(outputs);
+//	        	 
+//	        	 nodes.appendChild(node);
+//	         }
 	         
 
 	         // write the content into xml file
@@ -509,6 +562,11 @@ public class OSCAR2XML {
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	      }
+	}
+
+	
+	public Node makeNode(Document doc, String nodeName, String nodeContent) {
+		return doc.createElement(nodeName).appendChild(doc.createTextNode(nodeContent)).getParentNode();
 	}
 
 	
