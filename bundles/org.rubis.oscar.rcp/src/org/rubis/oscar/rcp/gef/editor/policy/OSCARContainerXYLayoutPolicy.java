@@ -20,13 +20,7 @@ import oscar.Topic;
 import org.rubis.oscar.rcp.gef.editor.policy.OSCARContainerXYLayoutPolicy;
 import org.rubis.oscar.rcp.gef.editor.command.OSCARNodeCreateCommand;
 import org.rubis.oscar.rcp.gef.editor.command.OSCARNodeChangeConstraintCommand;
-//JTJ
-import org.eclipse.draw2d.ColorConstants;
-import org.eclipse.draw2d.IFigure;
-import org.rubis.oscar.rcp.gef.editor.figure.OSCARThingFigure;
-import org.eclipse.draw2d.ImageFigure;
-import org.eclipse.gef.requests.DropRequest;
-import org.eclipse.jface.resource.ImageDescriptor;
+
 
 public class OSCARContainerXYLayoutPolicy extends XYLayoutEditPolicy {
 	
@@ -104,38 +98,4 @@ public class OSCARContainerXYLayoutPolicy extends XYLayoutEditPolicy {
 		}*/
 		return getChangeConstraintCommand(request);
 	}	
-	
-	/*JTJ feedback
-	@Override
-	protected void showLayoutTargetFeedback(Request request) {
-	  if(getHostFigure() instanceof OSCARThingFigure) {
-	    OSCARThingFigure figure = (OSCARThingFigure) getHostFigure();
-	    figure.setBackgroundColor(ColorConstants.red);
-	    figure.setOpaque(true);
-	    // Adding a new object somewhere in the screen:
-	    if(!request.getExtendedData().containsKey("feedbackFigure")) {
-	      IFigure feedbackFigure =
-	          new ImageFigure(ImageDescriptor.createFromFile(this.getClass(), "../icons/dd.png").createImage());
-	      feedbackFigure.setLocation(((DropRequest) request).getLocation());
-	      feedbackFigure.setSize(feedbackFigure.getPreferredSize());
-	      addFeedback(feedbackFigure);
-	      request.getExtendedData().put("feedbackFigure", feedbackFigure);
-	    } else {
-	      IFigure feedbackFigure = (IFigure) request.getExtendedData().remove("feedbackFigure");
-	      feedbackFigure.setLocation(((DropRequest) request).getLocation());
-	      request.getExtendedData().put("feedbackFigure", feedbackFigure);
-	    }
-	  }
-	}
-	
-	@Override
-	protected void eraseLayoutTargetFeedback(Request request) {
-	  if(getHostFigure() instanceof OSCARThingFigure) {
-	    OSCARThingFigure figure = (OSCARThingFigure) getHostFigure();
-	    figure.setBackgroundColor(ColorConstants.white);
-	    figure.setOpaque(false);
-	    IFigure feedbackFigure = (IFigure) request.getExtendedData().remove("feedbackFigure");
-	    removeFeedback(feedbackFigure);
-	  }
-	}//*/
 }

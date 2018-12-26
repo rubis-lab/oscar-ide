@@ -8,21 +8,20 @@ import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
-import org.eclipse.draw2d.Ellipse;
+import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.draw2d.PositionConstants;
 
 public class TopicFigure extends OSCARThingFigure {
 	private Label nameLabel;
-	private Ellipse rectangle;
+	private RectangleFigure rectangle;
 	private ConnectionAnchor connectionAnchor;
 	
 	public TopicFigure() {
 		setLayoutManager(new XYLayout());
 		nameLabel = new Label();
 		add(nameLabel);
-		rectangle = new Ellipse();
+		rectangle = new RectangleFigure();
 		rectangle.setFill(false);
 		rectangle.setLayoutManager(new XYLayout());
 		add(rectangle);
@@ -33,7 +32,7 @@ public class TopicFigure extends OSCARThingFigure {
 		return rectangle;
 	}
 	
-	protected Ellipse getRectangle() {
+	protected RectangleFigure getRectangle() {
 		return this.rectangle;
 	}
 	
