@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager">
-    <output url="file://$MODULE_DIR$/repository/target/products/oscar.product/macosx/cocoa/x86_64/Eclipse.app/Contents/MacOS/workspace/My/bin" />
-    <exclude-output />
-    <content url="file://$MODULE_DIR$/repository/target/products/oscar.product/macosx/cocoa/x86_64/Eclipse.app/Contents/MacOS/workspace/My" />
-    <orderEntry type="sourceFolder" forTests="false" />
-  </component>
-</module>
