@@ -13,6 +13,10 @@ import org.rubis.oscar.rcp.gef.editor.factory.NodeFactory;
 import org.rubis.oscar.rcp.gef.editor.factory.TopicFactory;
 import org.rubis.oscar.rcp.gef.editor.tool.CreationAndDirectEditTool;
 
+//JTJ
+import org.eclipse.gef.palette.CombinedTemplateCreationEntry;
+import org.eclipse.jface.resource.ImageDescriptor;
+
 
 public class OSCARGraphicalEditorPalette extends PaletteRoot {
 
@@ -41,13 +45,27 @@ public class OSCARGraphicalEditorPalette extends PaletteRoot {
 	}
 	
 	private void addNodeTool() {
+		/*
 		CreationToolEntry entry = new CreationToolEntry("Node", "Create a new Node",new NodeFactory(),null,null);
+		entry.setToolClass(CreationAndDirectEditTool.class);
+		group.add(entry);
+		//JTJ*/
+		CreationToolEntry entry = new CombinedTemplateCreationEntry("Node", "Create a new Node", new NodeFactory(),
+				ImageDescriptor.createFromFile(this.getClass(), "icons/object.ico"), ImageDescriptor.createFromFile(
+			        this.getClass(), "icons/object.ico"));
 		entry.setToolClass(CreationAndDirectEditTool.class);
 		group.add(entry);
 	}
 	
 	private void addTopicTool() {
+		/*
 		CreationToolEntry entry = new CreationToolEntry("Topic", "Create a new Topic",new TopicFactory(),null,null);
+		entry.setToolClass(CreationAndDirectEditTool.class);
+		group.add(entry);
+		//JTJ*/
+		CreationToolEntry entry = new CombinedTemplateCreationEntry("Topic", "Create a new Topic", new TopicFactory(),
+				ImageDescriptor.createFromFile(this.getClass(), "icons/object.ico"), ImageDescriptor.createFromFile(
+			        this.getClass(), "icons/object.ico"));
 		entry.setToolClass(CreationAndDirectEditTool.class);
 		group.add(entry);
 	}

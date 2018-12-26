@@ -33,6 +33,13 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.IPropertySourceProvider;
 import org.eclipse.ui.views.properties.PropertySheetPage;
+// JTJ
+import org.eclipse.gef.dnd.TemplateTransferDragSourceListener;
+import org.eclipse.gef.dnd.TemplateTransferDropTargetListener;
+import org.eclipse.gef.KeyStroke;
+import org.eclipse.gef.ui.parts.GraphicalViewerKeyHandler;
+import org.eclipse.swt.SWT;
+import org.eclipse.gef.ui.actions.GEFActionConstants;
 
 import org.rubis.oscar.rcp.gef.action.OSCARCreateObjectAction;
 //import com.oscar.opm.gef.action.OscarCodePathChangeAction;
@@ -48,6 +55,8 @@ public class OSCARGraphicalEditor extends GraphicalEditorWithFlyoutPalette
 	
 	private Resource opdResource;
 	private OSCARObjectProcessDiagram opd;
+	//JTJ
+	private PaletteRoot palette;
 	
 	PropertySheetPage propertyPage;
 	
@@ -72,6 +81,12 @@ public class OSCARGraphicalEditor extends GraphicalEditorWithFlyoutPalette
         getActionRegistry().registerAction(new ToggleGridAction(getGraphicalViewer())); 
         getActionRegistry().registerAction(new ToggleSnapToGeometryAction(getGraphicalViewer()));
         getGraphicalViewer().setContextMenu(new OSCARGraphicalEditorContextMenuProvider(getGraphicalViewer(),getActionRegistry()));
+        
+        // JTJ D&D
+        getGraphicalViewer().addDropTargetListener(new TemplateTransferDropTargetListener(getGraphicalViewer()));
+        getEditDomain().getPaletteViewer().addDragSourceListener(
+          new TemplateTransferDragSourceListener(getEditDomain().getPaletteViewer()));
+        // end D&D -> it does not works........
 	}
 	
 	@Override
@@ -96,7 +111,10 @@ public class OSCARGraphicalEditor extends GraphicalEditorWithFlyoutPalette
 	@Override
 	protected PaletteRoot getPaletteRoot() 
 	{
-		return new OSCARGraphicalEditorPalette();
+		//return new OSCARGraphicalEditorPalette();
+		// JTJ
+		if(palette == null) palette = new OSCARGraphicalEditorPalette();
+		return palette;
 	}
 	
 	@Override
@@ -127,10 +145,10 @@ public class OSCARGraphicalEditor extends GraphicalEditorWithFlyoutPalette
 
 	        char intxt[] = new char[str.length()];
 
-	        str.getChars(0, str.length(), intxt, 0); // ÀÔ·ÂÇÏ°íÀÚ ÇÏ´Â ¹®ÀÚ¿­À» ¹®ÀÚ¹è¿­
+	        str.getChars(0, str.length(), intxt, 0); // ï¿½Ô·ï¿½ï¿½Ï°ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¹è¿­
 
 	        FileWriter fw = new FileWriter("C:\\Users\\Sonic\\Desktop\\OSCAR IDE Last\\oscar-ide\\repository\\target\\products\\oscar.product\\win32\\win32\\x86_64\\workspace\\d\\My.xml");
-	        BufferedWriter bw = new BufferedWriter(fw); // ¹öÆÛ¸¦ »ç¿ëÇÑ °´Ã¼ bw »ý¼º
+	        BufferedWriter bw = new BufferedWriter(fw); // ï¿½ï¿½ï¿½Û¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ bw ï¿½ï¿½ï¿½ï¿½
 
 	        bw.write(intxt); 
 	        bw.close();
@@ -286,6 +304,16 @@ public class OSCARGraphicalEditor extends GraphicalEditorWithFlyoutPalette
 		{
 			source.setPropertyValue(id, value);
 		}
+	}
+	
+	//JTJ
+	private void configureKeyboardShortcuts() {
+	     GraphicalViewerKeyHandler keyHandler = new GraphicalViewerKeyHandler(getGraphicalViewer());
+	     keyHandler.put(KeyStroke.getPressed(SWT.F2, 0), getActionRegistry().getAction(GEFActionConstants.DIRECT_EDIT));
+	     keyHandler.put(
+	         KeyStroke.getPressed(SWT.F3, 0), getActionRegistry().getAction(ResizeToContentsAction.RESIZE_TO_CONTENTS));
+	     getGraphicalViewer().setKeyHandler(keyHandler);
+
 	}
 	/*
 	 

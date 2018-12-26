@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/bundles/org.rubis.oscar.oscarcore.model.edit/bin" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/bundles/org.rubis.oscar.oscarcore.model.edit">
+      <sourceFolder url="file://$MODULE_DIR$/bundles/org.rubis.oscar.oscarcore.model.edit/src" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="jdk" jdkName="JavaSE-1.8" jdkType="JavaSDK" />
+    <orderEntry type="module" module-name="org.rubis.oscar.oscarcore.model" />
+    <orderEntry type="library" name="ECLIPSE" level="application" />
+  </component>
+</module>
