@@ -40,7 +40,7 @@
       <editor
             class="org.rubis.oscar.rcp.gef.editor.OSCARGraphicalEditor"
             contributorClass="org.rubis.oscar.rcp.gef.editor.OSCARGraphicalEditorActionBarContributor"
-            default="false"
+            default="true"
             extensions="oscar"
             id="org.rubis.oscar.rcp.editorID"
             name="OSCAR Editor">

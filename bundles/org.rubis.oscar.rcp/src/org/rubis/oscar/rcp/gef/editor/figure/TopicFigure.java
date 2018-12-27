@@ -3,26 +3,26 @@ package org.rubis.oscar.rcp.gef.editor.figure;
 import org.eclipse.draw2d.ChopboxAnchor;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.RoundedRectangle;
-import org.eclipse.draw2d.EllipseAnchor;
+import org.eclipse.draw2d.RoundedRectangleAnchor;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
-import org.eclipse.draw2d.Ellipse;
+import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.draw2d.PositionConstants;
 
 public class TopicFigure extends OSCARThingFigure {
 	private Label nameLabel;
-	private Ellipse rectangle;
+	private RoundedRectangle rectangle;
 	private ConnectionAnchor connectionAnchor;
 	
 	public TopicFigure() {
 		setLayoutManager(new XYLayout());
 		nameLabel = new Label();
 		add(nameLabel);
-		rectangle = new Ellipse();
+		rectangle = new RoundedRectangle();
 		rectangle.setFill(false);
 		rectangle.setLayoutManager(new XYLayout());
 		add(rectangle);
@@ -33,7 +33,7 @@ public class TopicFigure extends OSCARThingFigure {
 		return rectangle;
 	}
 	
-	protected Ellipse getRectangle() {
+	protected RoundedRectangle getRectangle() {
 		return this.rectangle;
 	}
 	

@@ -32,6 +32,10 @@ public class OSCARGraphicalEditorContextMenuProvider extends ContextMenuProvider
 		menu.appendToGroup(GEFActionConstants.GROUP_UNDO, action);
 		action = getActionRegistry().getAction(ActionFactory.REDO.getId());
 		menu.appendToGroup(GEFActionConstants.GROUP_UNDO, action);
+		
+		//JTJ
+		action = getActionRegistry().getAction(ActionFactory.DELETE.getId());
+		menu.appendToGroup(GEFActionConstants.GROUP_UNDO, action);
 		/*action = getActionRegistry().getAction(OscarCodePathChangeAction.CHANGE_CODEPATH);
 		menu.appendToGroup(GEFActionConstants.GROUP_EDIT, action);
 		action = getActionRegistry().getAction(OscarCodeModifyAction.MODIFY_CODE);

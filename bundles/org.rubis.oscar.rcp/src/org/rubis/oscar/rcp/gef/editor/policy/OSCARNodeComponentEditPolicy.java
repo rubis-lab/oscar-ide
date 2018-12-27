@@ -16,6 +16,7 @@ import org.rubis.oscar.rcp.gef.editor.command.OSCARNodeDeleteCommand;
 import org.rubis.oscar.rcp.gef.editor.figure.OSCARNodeFigure;
 import org.rubis.oscar.rcp.gef.editor.part.OSCARNodeEditPart;
 
+
 /**
  * {@link EditPolicy} used for delete requests.
  *
@@ -40,12 +41,18 @@ public class OSCARNodeComponentEditPolicy extends ComponentEditPolicy {
      */
 	@Override
 	protected Command createDeleteCommand(GroupRequest deleteRequest) {
+		// JTJ
+		OSCARNodeDeleteCommand nodeToDelete = new OSCARNodeDeleteCommand();
+		nodeToDelete.setNode((OSCARNode) getHost().getModel());
+		return nodeToDelete;
+		
+		/*
 		OSCARNode nodeToDelete =  (OSCARNode) getHost().getModel();
 		CompoundCommand compoundCommand = new CompoundCommand();
 		compoundCommand = createRecursiveDeleteNodeCommand(nodeToDelete);
 		
 		return compoundCommand;
-
+		*/
         
 	}
 	
