@@ -1,6 +1,9 @@
 package org.rubis.oscar.xml2ros;
 
 import org.w3c.dom.*;
+import org.w3c.dom.traversal.DocumentTraversal;
+import org.w3c.dom.traversal.NodeIterator;
+
 import javax.xml.parsers.*;
 import java.io.*;
 import java.util.ArrayList;
@@ -22,197 +25,226 @@ public class XML2ROS {
     */
 	public static void convert() throws IOException {
 		
-        String sRate = getFirst("rate");
-        Integer rate;
-        if(sRate == null) rate = null;
-        else rate = Integer.parseInt(getFirst("rate"));
-    
-        String folderName = getFirst("packageName");
-    
-        new File(folderName).mkdirs();
-        new File(folderName + "/launch").mkdirs();
-        new File(folderName + "/src").mkdirs();
-        
-        NodeList nodes = getChildContentsOf("nodes");
-        
-        for(int nodeIndex = 0; nodeIndex < nodes.getLength(); nodeIndex++)
-        {
-            if(!nodes.item(nodeIndex).getNodeName().equals("node")) continue; // Irrelevant.
-            Tuple inputsOutputs = getInputsOutputs(nodes.item(nodeIndex).getChildNodes());
-            ArrayList<String> headers = new ArrayList<String>(); // Headers used by this node.
-            headers.add(getFirst("rosHeader"));
-            addAdditionalMessages(headers, nodes.item(nodeIndex).getChildNodes()); // By default only std_msgs is supported. Check XML file for additional specified ones.
-            for(String s : getHeaders(inputsOutputs, nodes.item(nodeIndex).getChildNodes()))
-                if(!headers.contains(s))
-                    headers.add(s);
-    
-            ArrayList<CallBack> callbacks = getCallBacks((ArrayList<Input>)inputsOutputs.x);
-            ArrayList<String> publishFunctions = new ArrayList<String>();
-    
-            String cpp = "";
-            // Add includes to cpp string.
-            for(int i = 0; i < headers.size(); i++) cpp += "#include " + headers.get(i) + "\n";
-            cpp += "\n";
-            // Add callback prototypes.
-            for(int i = 0; i < callbacks.size(); i++) cpp += callbacks.get(i).getPrototype() + "\n";
-            cpp += "\n";
-    
-            for(int i = 0; i < ((ArrayList<Output>)inputsOutputs.y).size(); i++)
-            {
-                String prototype = "void " + ((ArrayList<Output>)inputsOutputs.y).get(i).name + "_Publish(" + Types.typeMap.get(((ArrayList<Output>)inputsOutputs.y).get(i).type).getConstIdentifier() + ");\n";
-                cpp += indent(0) + prototype;
-        
-                String function = "void " + ((ArrayList<Output>)inputsOutputs.y).get(i).name + "_Publish(" + Types.typeMap.get(((ArrayList<Output>)inputsOutputs.y).get(i).type).getConstIdentifier() + ")\n";
-                function += "{\n" + indent(1) + "// Publish data code handling can go here if you want.\n\n" + indent(1) + ((ArrayList<Output>)inputsOutputs.y).get(i).name + ".publish(msg);\n}";
-                publishFunctions.add(function);
-            }
-    
-            cpp += "\n";
-    
-            // Add global variables
-            for(int i = 0; i < ((ArrayList<Output>)inputsOutputs.y).size(); i++)
-            {
-                String varInit = "ros::Publisher " + ((ArrayList<Output>)inputsOutputs.y).get(i).name + ";";
-                cpp += indent(0) + varInit + "\n";
-            }
-            cpp += "\n";
-    
-            // Add main function
-            cpp += "int main(int argc, char **argv)\n{\n";
-    
-            cpp += indent(1) + "ros::init(argc, argv, \"some_name\");\n";
-            cpp += indent(1) + "ros::NodeHandle n;\n";
-            if(rate != null) cpp += indent(1) + "ros::Rate loopRate(" + rate + ");\n";
-    
-            for(int i = 0; i < ((ArrayList<Output>)inputsOutputs.y).size(); i++)
-            {
-                String varInit = ((ArrayList<Output>)inputsOutputs.y).get(i).name + "" +
-                        " = n.advertise<" + Types.typeMap.get(((ArrayList<Output>)inputsOutputs.y).get(i).type).getTypeIdentifier() + ">(\"" + ((ArrayList<Output>)inputsOutputs.y).get(i).name + "\", " + ((ArrayList<Output>)inputsOutputs.y).get(i).queueSize + ");";
-        
-                cpp += indent(1) + varInit + "\n";
-            }
-            cpp += "\n";
-    
-            for(int i = 0; i < ((ArrayList<Input>)inputsOutputs.x).size(); i++)
-            {
-                String varInit = "ros::Subscriber " + ((ArrayList<Input>)inputsOutputs.x).get(i).subscribeTo + "Subscriber" + "" +
-                        " = n.subscribe(\"" + ((ArrayList<Input>)inputsOutputs.x).get(i).subscribeTo + "\", ";
-        
-                // Check if there the publisher we are subscribing to exists in the XML file.
-                // If it exists, copy the queue size.
-                // If it does not exist, set queue size as 1024.
-                int messageBuffer = 1024;
-                for(int y = 0; y < ((ArrayList<Output>)inputsOutputs.y).size(); y++)
-                    if(((ArrayList<Output>)inputsOutputs.y).get(y).name.equals(((ArrayList<Input>)inputsOutputs.x).get(i).subscribeTo))
-                    {
-                        messageBuffer = ((ArrayList<Output>)inputsOutputs.y).get(y).queueSize;
-                        break;
-                    }
-                varInit += messageBuffer + ", " + ((ArrayList<Input>)inputsOutputs.x).get(i).callBackFunction + ");";
-                cpp += indent(1) + varInit + "\n";
-            }
-            cpp += "\n";
-    
-            //cpp += indent(1) + "for(int i = 0; ros::ok(); i++)\n" + indent(1) + "{\n" + indent(2) + "// Put publisher code here, or wherever you please. This is just example loop.\n" + indent(1) + "}\n";
-            cpp += "\n";
-    
-            cpp += indent(1) + "ros::spin();\n";
-            cpp += indent(1) + "return 0;\n}";
-            cpp += "\n\n";
-    
-            // Add callback functions.
-            for(int i = 0; i < callbacks.size(); i++) cpp += callbacks.get(i).getFunction() + "\n\n";
-            cpp += "\n";
-    
-            // Add publish functions.
-            for(int i = 0; i < publishFunctions.size(); i++) cpp += publishFunctions.get(i) + "\n\n";
-            cpp += "\n";
-            System.out.println("Current file name is: " + getFirstInner("name", nodes.item(nodeIndex).getChildNodes()));
-            try (PrintWriter out = new PrintWriter(folderName + "/src/" + getFirstInner("name", nodes.item(nodeIndex).getChildNodes()) + ".cpp"))
-            {
-                out.println(cpp);
-            }
-            catch (Exception e)
-            {
-                System.out.println("Exc: " + e.getMessage());
-            }
-        }
-        
-        // Let's make launch files
-        // C++ Extensions (Case sensitive): .cc, .C, .cxx, c++, cpp
-        
-        ArrayList<String> cppFiles = new ArrayList<String>();
-        File dir = new File("./" + folderName + "/src/");
-        File[] filesList = dir.listFiles();
-        for (File file : filesList)
-            if (file.isFile())
-            {
-                String name = file.getName().split("\\.")[0];
-                String type = file.getName().split("\\.")[1];
-                if(type.equals("cc") || type.equals("C") || type.equals("cxx") || type.equals("c++") || type.equals("cpp"))
-                    cppFiles.add(name);
-            }
-        for(int i = 0; i < cppFiles.size(); i++)
-        {
-            try (PrintWriter out = new PrintWriter(folderName + "/launch/" + cppFiles.get(i) + ".launch"))
-            {
-                out.println("<?xml version=\"1.0\"?>\n<launch>\n\t<node name=\"" + cppFiles.get(i) + "\" pkg=\"" + getFirst("packageName") + "\" type=\"" + cppFiles.get(i) + "\" output=\"screen\" />\n</launch>");
-            }
-            catch (Exception e)
-            {
-                System.out.println("Exc: " + e.getMessage());
-            }
-        }
-        
-        // Let's make package.xml
-        ArrayList<String> typeDepends = new ArrayList<String>(); // Let's get all the type dependencies.
-        // Would be smarter to just use a collection that doesn't allow duplicates...
-        for(String key : Types.typeMap.keySet())
-            if(!typeDepends.contains(Types.typeMap.get(key).namespace))
-                typeDepends.add(Types.typeMap.get(key).namespace);
-        String packageXml = "<?xml version=\"1.0\"?>\n<package format=\"2\">\n\t<name>" + getFirst("packageName") + "</name>\n\t<version>" + getFirst("version") + "</version>\n\t<description>" + getFirst("description") + "</description>\n\n\t<maintainer email=\"" + getFirst("maintainerEmail") + "\">" + getFirst("maintainerName") + "</maintainer>\n\t<license>" + getFirst("license") + "</license>\n\t<buildtool_depend>catkin</buildtool_depend>\n\n\t";
-        packageXml += "<build_depend>roscpp</build_depend>\n\t<exec_depend>roscpp</exec_depend>\n";
-        for(int i = 0; i < typeDepends.size(); i++)
-        {
-            packageXml += "\t<build_depend>" + typeDepends.get(i) + "</build_depend>\n";
-            packageXml += "\t<exec_depend>" + typeDepends.get(i) + "</exec_depend>\n";
-        }
-        packageXml += "</package>";
-        
-        // Save package xml
-        try (PrintWriter out = new PrintWriter(folderName + "/package.xml"))
-        {
-            out.println(packageXml);
-        }
-        catch (Exception e)
-        {
-            System.out.println("Exc: " + e.getMessage());
-        }
-        
-        // Create CMakeLists.txt
-        String cmakelists = "";
-        cmakelists += "cmake_minimum_required(VERSION 2.8.3)\nproject(" + getFirst("packageName") + ")\n";
-        String requiredComponents = "roscpp";
-        for(String s : typeDepends) requiredComponents += " " + s;
-        cmakelists += "\nfind_package(catkin REQUIRED COMPONENTS " + requiredComponents + ")\n\n";
-        cmakelists += "catkin_package(\n# INCLUDE_DIRS include\n# LIBRARIES for package\n# CATKIN_DEPENDS depends\n# DEPENDS system_lib\n)\n\n";
-        cmakelists += "include_directories(include ${catkin_INCLUDE_DIRS})\n\n";
-        
-        for(int i = 0; i < cppFiles.size(); i++)
-        {
-            cmakelists += "add_executable(" + cppFiles.get(i) + " src/" + cppFiles.get(i) + ".cpp)\n";
-            cmakelists += "target_link_libraries(" + cppFiles.get(i) + " ${catkin_LIBRARIES})\n";
-        }
-        
-        // Save it
-        try (PrintWriter out = new PrintWriter(folderName + "/CMakeLists.txt"))
-        {
-            out.println(cmakelists);
-        }
-        catch (Exception e)
-        {
-            System.out.println("Exc: " + e.getMessage());
-        }
+		try {
+			File inputFile = new File("data.xml");
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(inputFile);
+			doc.getDocumentElement().normalize();
+			System.out.println("Root element : " + doc.getDocumentElement().getNodeName());
+			String projectName = doc.getElementsByTagName("name").item(0).getTextContent();
+			File rrFile = new File("workspace" + File.separator + projectName + File.separator + "result.txt");
+			rrFile.createNewFile();
+			NodeList nList = doc.getElementsByTagName("node");
+			System.out.println("-----------------------");
+			
+			File rosFolder = new File("workspace" + File.separator + projectName + File.separator + "src");
+			rosFolder.mkdirs();
+			for (int idx = 0; idx < nList.getLength(); idx++) {
+				Node nNode = nList.item(idx);
+				System.out.println("\nCurrent Element : " + nNode.getNodeName());
+				
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+					Element element = (Element) nNode;
+					File rosFile = new File("workspace" + File.separator + projectName + File.separator + "src" + File.separator + element.getElementsByTagName("name").item(0).getTextContent() + ".ros");
+					rosFile.createNewFile();
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+//        String sRate = getFirst("rate");
+//        Integer rate;
+//        if(sRate == null) rate = null;
+//        else rate = Integer.parseInt(getFirst("rate"));
+//    
+//        String folderName = getFirst("name");
+//    
+//        new File(folderName).mkdirs();
+//        new File(folderName + "/launch").mkdirs();
+//        new File(folderName + "/src").mkdirs();
+//        
+//        NodeList nodes = getChildContentsOf("nodes");
+//        
+//        for(int nodeIndex = 0; nodeIndex < nodes.getLength(); nodeIndex++)
+//        {
+//            if(!nodes.item(nodeIndex).getNodeName().equals("node")) continue; // Irrelevant.
+//            Tuple inputsOutputs = getInputsOutputs(nodes.item(nodeIndex).getChildNodes());
+//            ArrayList<String> headers = new ArrayList<String>(); // Headers used by this node.
+//            headers.add(getFirst("rosHeader"));
+//            addAdditionalMessages(headers, nodes.item(nodeIndex).getChildNodes()); // By default only std_msgs is supported. Check XML file for additional specified ones.
+//            for(String s : getHeaders(inputsOutputs, nodes.item(nodeIndex).getChildNodes()))
+//                if(!headers.contains(s))
+//                    headers.add(s);
+//    
+//            ArrayList<CallBack> callbacks = getCallBacks((ArrayList<Input>)inputsOutputs.x);
+//            ArrayList<String> publishFunctions = new ArrayList<String>();
+//    
+//            String cpp = "";
+//            // Add includes to cpp string.
+//            for(int i = 0; i < headers.size(); i++) cpp += "#include " + headers.get(i) + "\n";
+//            cpp += "\n";
+//            // Add callback prototypes.
+//            for(int i = 0; i < callbacks.size(); i++) cpp += callbacks.get(i).getPrototype() + "\n";
+//            cpp += "\n";
+//    
+//            for(int i = 0; i < ((ArrayList<Output>)inputsOutputs.y).size(); i++)
+//            {
+//                String prototype = "void " + ((ArrayList<Output>)inputsOutputs.y).get(i).name + "_Publish(" + Types.typeMap.get(((ArrayList<Output>)inputsOutputs.y).get(i).type).getConstIdentifier() + ");\n";
+//                cpp += indent(0) + prototype;
+//        
+//                String function = "void " + ((ArrayList<Output>)inputsOutputs.y).get(i).name + "_Publish(" + Types.typeMap.get(((ArrayList<Output>)inputsOutputs.y).get(i).type).getConstIdentifier() + ")\n";
+//                function += "{\n" + indent(1) + "// Publish data code handling can go here if you want.\n\n" + indent(1) + ((ArrayList<Output>)inputsOutputs.y).get(i).name + ".publish(msg);\n}";
+//                publishFunctions.add(function);
+//            }
+//    
+//            cpp += "\n";
+//    
+//            // Add global variables
+//            for(int i = 0; i < ((ArrayList<Output>)inputsOutputs.y).size(); i++)
+//            {
+//                String varInit = "ros::Publisher " + ((ArrayList<Output>)inputsOutputs.y).get(i).name + ";";
+//                cpp += indent(0) + varInit + "\n";
+//            }
+//            cpp += "\n";
+//    
+//            // Add main function
+//            cpp += "int main(int argc, char **argv)\n{\n";
+//    
+//            cpp += indent(1) + "ros::init(argc, argv, \"some_name\");\n";
+//            cpp += indent(1) + "ros::NodeHandle n;\n";
+//            if(rate != null) cpp += indent(1) + "ros::Rate loopRate(" + rate + ");\n";
+//    
+//            for(int i = 0; i < ((ArrayList<Output>)inputsOutputs.y).size(); i++)
+//            {
+//                String varInit = ((ArrayList<Output>)inputsOutputs.y).get(i).name + "" +
+//                        " = n.advertise<" + Types.typeMap.get(((ArrayList<Output>)inputsOutputs.y).get(i).type).getTypeIdentifier() + ">(\"" + ((ArrayList<Output>)inputsOutputs.y).get(i).name + "\", " + ((ArrayList<Output>)inputsOutputs.y).get(i).queueSize + ");";
+//        
+//                cpp += indent(1) + varInit + "\n";
+//            }
+//            cpp += "\n";
+//    
+//            for(int i = 0; i < ((ArrayList<Input>)inputsOutputs.x).size(); i++)
+//            {
+//                String varInit = "ros::Subscriber " + ((ArrayList<Input>)inputsOutputs.x).get(i).subscribeTo + "Subscriber" + "" +
+//                        " = n.subscribe(\"" + ((ArrayList<Input>)inputsOutputs.x).get(i).subscribeTo + "\", ";
+//        
+//                // Check if there the publisher we are subscribing to exists in the XML file.
+//                // If it exists, copy the queue size.
+//                // If it does not exist, set queue size as 1024.
+//                int messageBuffer = 1024;
+//                for(int y = 0; y < ((ArrayList<Output>)inputsOutputs.y).size(); y++)
+//                    if(((ArrayList<Output>)inputsOutputs.y).get(y).name.equals(((ArrayList<Input>)inputsOutputs.x).get(i).subscribeTo))
+//                    {
+//                        messageBuffer = ((ArrayList<Output>)inputsOutputs.y).get(y).queueSize;
+//                        break;
+//                    }
+//                varInit += messageBuffer + ", " + ((ArrayList<Input>)inputsOutputs.x).get(i).callBackFunction + ");";
+//                cpp += indent(1) + varInit + "\n";
+//            }
+//            cpp += "\n";
+//    
+//            //cpp += indent(1) + "for(int i = 0; ros::ok(); i++)\n" + indent(1) + "{\n" + indent(2) + "// Put publisher code here, or wherever you please. This is just example loop.\n" + indent(1) + "}\n";
+//            cpp += "\n";
+//    
+//            cpp += indent(1) + "ros::spin();\n";
+//            cpp += indent(1) + "return 0;\n}";
+//            cpp += "\n\n";
+//    
+//            // Add callback functions.
+//            for(int i = 0; i < callbacks.size(); i++) cpp += callbacks.get(i).getFunction() + "\n\n";
+//            cpp += "\n";
+//    
+//            // Add publish functions.
+//            for(int i = 0; i < publishFunctions.size(); i++) cpp += publishFunctions.get(i) + "\n\n";
+//            cpp += "\n";
+//            System.out.println("Current file name is: " + getFirstInner("name", nodes.item(nodeIndex).getChildNodes()));
+//            try (PrintWriter out = new PrintWriter(folderName + "/src/" + getFirstInner("name", nodes.item(nodeIndex).getChildNodes()) + ".cpp"))
+//            {
+//                out.println(cpp);
+//            }
+//            catch (Exception e)
+//            {
+//                System.out.println("Exc: " + e.getMessage());
+//            }
+//        }
+//        
+//        // Let's make launch files
+//        // C++ Extensions (Case sensitive): .cc, .C, .cxx, c++, cpp
+//        
+//        ArrayList<String> cppFiles = new ArrayList<String>();
+//        File dir = new File("./" + folderName + "/src/");
+//        File[] filesList = dir.listFiles();
+//        for (File file : filesList)
+//            if (file.isFile())
+//            {
+//                String name = file.getName().split("\\.")[0];
+//                String type = file.getName().split("\\.")[1];
+//                if(type.equals("cc") || type.equals("C") || type.equals("cxx") || type.equals("c++") || type.equals("cpp"))
+//                    cppFiles.add(name);
+//            }
+//        for(int i = 0; i < cppFiles.size(); i++)
+//        {
+//            try (PrintWriter out = new PrintWriter(folderName + "/launch/" + cppFiles.get(i) + ".launch"))
+//            {
+//                out.println("<?xml version=\"1.0\"?>\n<launch>\n\t<node name=\"" + cppFiles.get(i) + "\" pkg=\"" + getFirst("packageName") + "\" type=\"" + cppFiles.get(i) + "\" output=\"screen\" />\n</launch>");
+//            }
+//            catch (Exception e)
+//            {
+//                System.out.println("Exc: " + e.getMessage());
+//            }
+//        }
+//        
+//        // Let's make package.xml
+//        ArrayList<String> typeDepends = new ArrayList<String>(); // Let's get all the type dependencies.
+//        // Would be smarter to just use a collection that doesn't allow duplicates...
+//        for(String key : Types.typeMap.keySet())
+//            if(!typeDepends.contains(Types.typeMap.get(key).namespace))
+//                typeDepends.add(Types.typeMap.get(key).namespace);
+//        String packageXml = "<?xml version=\"1.0\"?>\n<package format=\"2\">\n\t<name>" + getFirst("packageName") + "</name>\n\t<version>" + getFirst("version") + "</version>\n\t<description>" + getFirst("description") + "</description>\n\n\t<maintainer email=\"" + getFirst("maintainerEmail") + "\">" + getFirst("maintainerName") + "</maintainer>\n\t<license>" + getFirst("license") + "</license>\n\t<buildtool_depend>catkin</buildtool_depend>\n\n\t";
+//        packageXml += "<build_depend>roscpp</build_depend>\n\t<exec_depend>roscpp</exec_depend>\n";
+//        for(int i = 0; i < typeDepends.size(); i++)
+//        {
+//            packageXml += "\t<build_depend>" + typeDepends.get(i) + "</build_depend>\n";
+//            packageXml += "\t<exec_depend>" + typeDepends.get(i) + "</exec_depend>\n";
+//        }
+//        packageXml += "</package>";
+//        
+//        // Save package xml
+//        try (PrintWriter out = new PrintWriter(folderName + "/package.xml"))
+//        {
+//            out.println(packageXml);
+//        }
+//        catch (Exception e)
+//        {
+//            System.out.println("Exc: " + e.getMessage());
+//        }
+//        
+//        // Create CMakeLists.txt
+//        String cmakelists = "";
+//        cmakelists += "cmake_minimum_required(VERSION 2.8.3)\nproject(" + getFirst("packageName") + ")\n";
+//        String requiredComponents = "roscpp";
+//        for(String s : typeDepends) requiredComponents += " " + s;
+//        cmakelists += "\nfind_package(catkin REQUIRED COMPONENTS " + requiredComponents + ")\n\n";
+//        cmakelists += "catkin_package(\n# INCLUDE_DIRS include\n# LIBRARIES for package\n# CATKIN_DEPENDS depends\n# DEPENDS system_lib\n)\n\n";
+//        cmakelists += "include_directories(include ${catkin_INCLUDE_DIRS})\n\n";
+//        
+//        for(int i = 0; i < cppFiles.size(); i++)
+//        {
+//            cmakelists += "add_executable(" + cppFiles.get(i) + " src/" + cppFiles.get(i) + ".cpp)\n";
+//            cmakelists += "target_link_libraries(" + cppFiles.get(i) + " ${catkin_LIBRARIES})\n";
+//        }
+//        
+//        // Save it
+//        try (PrintWriter out = new PrintWriter(folderName + "/CMakeLists.txt"))
+//        {
+//            out.println(cmakelists);
+//        }
+//        catch (Exception e)
+//        {
+//            System.out.println("Exc: " + e.getMessage());
+//        }
     }
 
     public static String getFirst(String tag)
