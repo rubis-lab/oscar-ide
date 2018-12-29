@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<data>
+    <package>
+        <name>my_package</name>
+        <version>0.0.0</version>
+        <description>Package Description</description>
+        <maintainer_name>you</maintainer_name>
+        <maintainer_email>you@yourdomain.tld</maintainer_email>
+        <license>TODO</license>
+        <node>
+            <name>Node1</name>
+            <pub>
+                <name>Topic1</name>
+                <topic>Topic1</topic>
+                <msg/>
+                <type/>
+                <queue_size>5</queue_size>
+                <callback>zedCallback</callback>
+            </pub>
+        </node>
+        <node>
+            <name>Node2</name>
+            <sub>
+                <name>Topic1</name>
+                <topic>Topic1</topic>
+                <msg/>
+                <type/>
+                <queue_size>1</queue_size>
+                <callback>zedCallback</callback>
+            </sub>
+        </node>
+    </package>
+</data>

@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - OSCAR2XML",
+            "request": "launch",
+            "mainClass": "org.rubis.oscar.oscar2xml.OSCAR2XML",
+            "projectName": "org.rubis.oscar.oscar2xml"
+        }
+    ]
+}

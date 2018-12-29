@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<oscar:OSCARObjectProcessDiagram xmlns:oscar="rubis.snu.ac.kr" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+    <nodes constraints="223,127,200,130" msg="" msg_type="" name="Node1" publishMSG="//@links.0" subscribeMSG="" xsi:type="oscar:Node"/>
+    <nodes constraints="543,157,200,130" msg="" msg_type="" name="Node2" publishMSG="" subscribeMSG="//@links.1" xsi:type="oscar:Node"/>
+    <topics constraints="367,344,200,130" id="" msg="" msg_type="" name="Topic1" publishMSG="//@links.1" subscribeMSG="//@links.0" xsi:type="oscar:Topic"/>
+    <links source="\\@elem.0" target="\\@elem.0" xsi:type="oscar:OSCARProceduralLink"/>
+    <links source="\\@elem.0" target="\\@elem.1" xsi:type="oscar:OSCARProceduralLink"/>
+</oscar:OSCARObjectProcessDiagram>

@@ -3,7 +3,9 @@ package org.rubis.oscar.rcp;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.FilenameFilter;
 import java.io.IOException;
+import java.nio.file.PathMatcher;
 
 import javax.inject.Inject;
 
@@ -161,7 +163,23 @@ public class EditRunConfiguration{
 				/* OSCAR --> XML */
 				OSCAR2XML oscar2xml = new OSCAR2XML();
 				try {
-					oscar2xml.preprocessXML("workspace" + File.separator + "My" + File.separator + "My.oscar");
+					File workspaceFolder = new File("workspace");
+					FilenameFilter filter = new FilenameFilter() {
+
+						@Override
+						public boolean accept(File dir, String name) {
+							// TODO Auto-generated method stub
+							if(name.equals(".metadata")) {
+								return false;
+							}
+							return true;
+						}
+						
+					};
+					
+					File[] projectFolders = workspaceFolder.listFiles(filter);
+					if(projectFolders.length == 0) throw new Exception(); // oscar2xml.preprocessXML("My");
+					else oscar2xml.preprocessXML(projectFolders[0].getName());
 					oscar2xml.parseOSCAR();
 					oscar2xml.writeXML();
 				} catch (Exception e) {

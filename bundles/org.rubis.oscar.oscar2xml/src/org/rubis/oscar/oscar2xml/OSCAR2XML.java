@@ -1,6 +1,7 @@
 package org.rubis.oscar.oscar2xml;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -21,6 +22,12 @@ public class OSCAR2XML {
 	ArrayList<OSCARNode> OSCARNodes;
 	ArrayList<OSCARTopic> OSCARTopics;
 	ArrayList<OSCARLink> OSCARLinks;
+	String name;
+	String version;
+	String description;
+	String maintainer_name;
+	String maintainer_email;
+	String license;
 	
 	public OSCAR2XML() {
 		super();
@@ -31,28 +38,50 @@ public class OSCAR2XML {
 	
 	public static void main(String[] args) throws Exception {
 		System.out.println("dd");
-//		File debugFile = new File("debugout.txt");
-//		debugFile.createNewFile();
+		File debugFile = new File("debugout.txt");
+		debugFile.createNewFile();
 		
 		OSCAR2XML oscar = new OSCAR2XML();
-		// oscar.preprocessXML("oscar.xml");
+		 oscar.preprocessXML("oscar.xml");
 		oscar.parseOSCAR();
 		oscar.writeXML();
 	}
 	
 	public void convert(String fileName) throws Exception {
-		//File debugFile = new File(fileName);
-		//debugFile.createNewFile();
+		File debugFile = new File(fileName);
+		debugFile.createNewFile();
 		
 		OSCAR2XML oscar = new OSCAR2XML();
-//		oscar.preprocessXML(fileName);
+		oscar.preprocessXML(fileName);
 		oscar.parseOSCAR();
 		oscar.writeXML();
 		
 	}
 	
-	public void preprocessXML(String fileName) throws Exception {
+	public void preprocessXML(String projectName) throws Exception {
 		try {
+			 File projectDir = new File("workspace" + File.separator + projectName);
+			 FilenameFilter filter = new FilenameFilter() {
+
+				@Override
+				public boolean accept(File dir, String name) {
+					// TODO Auto-generated method stub
+					if(name.lastIndexOf('.') > 0) {
+						int lastIdx = name.lastIndexOf('.');
+						if(name.substring(lastIdx).equals(".oscar")) {
+							return true;
+						}
+					}
+					return false;
+				}
+			 };
+			 
+			 File[] oscarFiles = projectDir.listFiles(filter);
+			 
+			 if(oscarFiles.length == 0) throw new Exception();
+			 
+			 String fileName = oscarFiles[0].getPath();
+					 
 			 File inputFile = new File(fileName);
 			 DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -81,6 +110,10 @@ public class OSCAR2XML {
      		 Attr xmlnsxoscarRootAttr = docOut.createAttribute("xmlns:oscar");
      		 xmlnsxoscarRootAttr.setValue(prevRootElement.getAttribute("xmlns:oscar"));
     		 rootElement.setAttributeNode(xmlnsxoscarRootAttr);
+    		 
+    		 Attr projectNameAttr = docOut.createAttribute("name");
+    		 projectNameAttr.setValue(projectName);
+    		 rootElement.setAttributeNode(projectNameAttr);
     		 
     		 docOut.appendChild(rootElement);
              
@@ -248,6 +281,7 @@ public class OSCAR2XML {
 	         Document doc = dBuilder.parse(inputFile);
 	         doc.getDocumentElement().normalize();
 	         System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+	         name = doc.getDocumentElement().getAttribute("name");
 	         
 	         /* nodes */
 	         NodeList nList = doc.getElementsByTagName("nodes");
@@ -398,7 +432,7 @@ public class OSCAR2XML {
 	         Element packageElement = doc.createElement("package");
 	         rootElement.appendChild(packageElement);
 
-	         packageElement.appendChild(makeNode(doc, "name", "my_package"));
+	         packageElement.appendChild(makeNode(doc, "name", name));
 	         packageElement.appendChild(makeNode(doc, "version", "0.0.0"));
 	         packageElement.appendChild(makeNode(doc, "description", "Package Description"));
 	         packageElement.appendChild(makeNode(doc, "maintainer_name", "you"));
