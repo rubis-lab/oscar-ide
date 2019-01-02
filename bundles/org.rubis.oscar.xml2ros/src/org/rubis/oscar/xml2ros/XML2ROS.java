@@ -33,8 +33,6 @@ public class XML2ROS {
 			doc.getDocumentElement().normalize();
 			System.out.println("Root element : " + doc.getDocumentElement().getNodeName());
 			String projectName = doc.getElementsByTagName("name").item(0).getTextContent();
-			File rrFile = new File("workspace" + File.separator + projectName + File.separator + "result.txt");
-			rrFile.createNewFile();
 			NodeList nList = doc.getElementsByTagName("node");
 			System.out.println("-----------------------");
 			
