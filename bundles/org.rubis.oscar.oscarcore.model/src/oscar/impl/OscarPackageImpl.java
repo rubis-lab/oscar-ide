@@ -338,6 +338,24 @@ public class OscarPackageImpl extends EPackageImpl implements OscarPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getNode_Group() {
+		return (EReference)nodeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getNode_Members() {
+		return (EReference)nodeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTopic() {
 		return topicEClass;
 	}
@@ -499,6 +517,8 @@ public class OscarPackageImpl extends EPackageImpl implements OscarPackage {
 		createEAttribute(oscarThingEClass, OSCAR_THING__MSG_TYPE);
 
 		nodeEClass = createEClass(NODE);
+		createEReference(nodeEClass, NODE__GROUP);
+		createEReference(nodeEClass, NODE__MEMBERS);
 
 		topicEClass = createEClass(TOPIC);
 
@@ -581,6 +601,8 @@ public class OscarPackageImpl extends EPackageImpl implements OscarPackage {
 		initEAttribute(getOSCARThing_Msg_type(), ecorePackage.getEString(), "msg_type", null, 0, 1, OSCARThing.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nodeEClass, Node.class, "Node", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getNode_Group(), this.getNode(), this.getNode_Members(), "group", null, 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNode_Members(), this.getNode(), this.getNode_Group(), "members", null, 0, -1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(topicEClass, Topic.class, "Topic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

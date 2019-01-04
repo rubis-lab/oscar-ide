@@ -35,7 +35,7 @@ public class OSCARThingImpl extends OSCARNodeImpl implements OSCARThing {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = "[ ]";
+	protected static final String NAME_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -55,7 +55,7 @@ public class OSCARThingImpl extends OSCARNodeImpl implements OSCARThing {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String MSG_EDEFAULT = "MSG";
+	protected static final String MSG_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getMsg() <em>Msg</em>}' attribute.
@@ -75,7 +75,7 @@ public class OSCARThingImpl extends OSCARNodeImpl implements OSCARThing {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String MSG_TYPE_EDEFAULT = "MSG_Type";
+	protected static final String MSG_TYPE_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getMsg_type() <em>Msg type</em>}' attribute.

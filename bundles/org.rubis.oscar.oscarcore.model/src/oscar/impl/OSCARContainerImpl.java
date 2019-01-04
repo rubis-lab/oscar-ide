@@ -10,9 +10,7 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -33,7 +31,7 @@ import oscar.OscarPackage;
  *
  * @generated
  */
-public class OSCARContainerImpl extends EObjectImpl implements OSCARContainer {
+public class OSCARContainerImpl extends MinimalEObjectImpl.Container implements OSCARContainer {
 	/**
 	 * The cached value of the '{@link #getNodes() <em>Nodes</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

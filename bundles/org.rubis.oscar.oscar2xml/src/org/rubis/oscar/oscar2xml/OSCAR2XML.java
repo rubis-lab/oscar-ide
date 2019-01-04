@@ -163,6 +163,14 @@ public class OSCAR2XML {
 		                    msg_typeAttr.setValue(eElement.getAttribute("msg_type"));
 		                    node.setAttributeNode(msg_typeAttr);
 		                    
+		                    Attr groupAttr = docOut.createAttribute("group");
+		                    groupAttr.setValue(eElement.getAttribute("group"));
+		                    node.setAttributeNode(groupAttr);
+		                    
+		                    Attr membersAttr = docOut.createAttribute("members");
+		                    membersAttr.setValue(eElement.getAttribute("members"));
+		                    node.setAttributeNode(membersAttr);
+		                    
 		                    rootElement.appendChild(node);
 		                    idxLookup.add(nodeCnt);
 		                    nodeCnt++;
@@ -307,13 +315,19 @@ public class OSCAR2XML {
 		 	                  + eElement.getAttribute("msg"));
 	               System.out.println("msg_type : " 
 		 	                  + eElement.getAttribute("msg_type"));
+	               System.out.println("group : "
+	            		  + eElement.getAttribute("group"));
+	               System.out.println("members : "
+	            		   + eElement.getAttribute("members"));
 	               
 	               OSCARNode oscarNode = new OSCARNode(
 	            		   eElement.getAttribute("xsi:type"), 
 	            		   parseStringToArrayList(eElement.getAttribute("publishMSG")),
 	            		   parseStringToArrayList(eElement.getAttribute("subscribeMSG")),
 	            		   eElement.getAttribute("constraints"),
-	            		   eElement.getAttribute("name"));
+	            		   eElement.getAttribute("name"),
+	            		   eElement.getAttribute("group"),
+	            		   parseStringToArrayList(eElement.getAttribute("members")));
 	               OSCARNodes.add(oscarNode);
 	               
 	               System.out.println(oscarNode.toString());
@@ -402,6 +416,10 @@ public class OSCAR2XML {
 	      }
 	}
 	
+	public OSCARNode getNode(String id) {
+		return OSCARNodes.get(Integer.parseInt(id));
+	}
+	
 	public OSCARTopic getSubscribedTopic(String id) {
 		OSCARLink subLink = OSCARLinks.get(Integer.parseInt(id));
 		String subTopicID = subLink.getSource();
@@ -445,6 +463,19 @@ public class OSCAR2XML {
 	        	 OSCARNode oscar_node = OSCARNodes.get(i);
 	        	 
 	        	 nodeElement.appendChild(makeNode(doc, "name", oscar_node.getName()));
+	        	 if(!oscar_node.getGroup().equals("")) {
+	        		 OSCARNode group_node = getNode(oscar_node.getGroup().split("\\.")[1]);
+	        		 nodeElement.appendChild(makeNode(doc, "group", group_node.getName()));
+	        	 }
+	        	 ArrayList<String> member_list = oscar_node.getMembers();
+	        	 for(int j = 0; j < member_list.size(); j++) {
+	        		 Element memElement = doc.createElement("member");
+	        		 OSCARNode memNode = getNode(member_list.get(j));
+	        		 
+	        		 memElement.appendChild(makeNode(doc, "name", memNode.getName()));
+	        		 
+	        		 nodeElement.appendChild(memElement);
+	        	 }
 	        	 
 	        	 ArrayList<String> subscribe_list = oscar_node.getSubscribe();
 	        	 for(int j = 0; j < subscribe_list.size(); j++) {

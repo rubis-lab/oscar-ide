@@ -15,8 +15,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
@@ -43,7 +42,7 @@ import oscar.OscarPackage;
  *
  * @generated
  */
-public class OSCARLinkImpl extends EObjectImpl implements OSCARLink {
+public class OSCARLinkImpl extends MinimalEObjectImpl.Container implements OSCARLink {
 	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
 	 * <!-- begin-user-doc -->

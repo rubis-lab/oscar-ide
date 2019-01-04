@@ -27,7 +27,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="msg" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="msg_type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Node" eSuperTypes="#//OSCARThing"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Node" eSuperTypes="#//OSCARThing">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="group" eType="#//Node"
+        eOpposite="#//Node/members"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
+        eType="#//Node" eOpposite="#//Node/group"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Topic" eSuperTypes="#//OSCARThing"/>
   <eClassifiers xsi:type="ecore:EClass" name="OSCARLink">
     <eStructuralFeatures xsi:type="ecore:EReference" name="opd" eType="#//OSCARObjectProcessDiagram"

@@ -452,13 +452,31 @@ public interface OscarPackage extends EPackage {
 	int NODE__MSG_TYPE = OSCAR_THING__MSG_TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Group</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__GROUP = OSCAR_THING_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Members</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__MEMBERS = OSCAR_THING_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_FEATURE_COUNT = OSCAR_THING_FEATURE_COUNT + 0;
+	int NODE_FEATURE_COUNT = OSCAR_THING_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Get Publish</em>' operation.
@@ -999,6 +1017,28 @@ public interface OscarPackage extends EPackage {
 	EClass getNode();
 
 	/**
+	 * Returns the meta object for the reference '{@link oscar.Node#getGroup <em>Group</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Group</em>'.
+	 * @see oscar.Node#getGroup()
+	 * @see #getNode()
+	 * @generated
+	 */
+	EReference getNode_Group();
+
+	/**
+	 * Returns the meta object for the reference list '{@link oscar.Node#getMembers <em>Members</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Members</em>'.
+	 * @see oscar.Node#getMembers()
+	 * @see #getNode()
+	 * @generated
+	 */
+	EReference getNode_Members();
+
+	/**
 	 * Returns the meta object for class '{@link oscar.Topic <em>Topic</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1304,6 +1344,22 @@ public interface OscarPackage extends EPackage {
 		 * @generated
 		 */
 		EClass NODE = eINSTANCE.getNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Group</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NODE__GROUP = eINSTANCE.getNode_Group();
+
+		/**
+		 * The meta object literal for the '<em><b>Members</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NODE__MEMBERS = eINSTANCE.getNode_Members();
 
 		/**
 		 * The meta object literal for the '{@link oscar.impl.TopicImpl <em>Topic</em>}' class.

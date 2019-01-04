@@ -22,34 +22,34 @@ import org.rubis.oscar.rcp.gef.editor.policy.OSCARNodeGraphicalNodeEditPolicy;
 
 public abstract class OSCARNodeEditPart extends AbstractGraphicalEditPart implements NodeEditPart {
 	
-	private OPMNodeAdapter adapter;
-	
-	public class OPMNodeAdapter implements Adapter{
-		@Override
-		public void notifyChanged(Notification notification) {
-			refresh();
-		}
-		
-		@Override
-		public Notifier getTarget() {
-			return (OSCARNode)getModel();
-		}
-		
-		@Override
-		public void setTarget(Notifier newTarget) {
-			//Do nothing
-		}
-		
-		@Override
-		public boolean isAdapterForType(Object type) {
-			return type.equals(OSCARNode.class);
-		}
-		
-	}
+//	private OPMNodeAdapter adapter;
+//	
+//	public class OPMNodeAdapter implements Adapter{
+//		@Override
+//		public void notifyChanged(Notification notification) {
+//			refresh();
+//		}
+//		
+//		@Override
+//		public Notifier getTarget() {
+//			return (OSCARNode)getModel();
+//		}
+//		
+//		@Override
+//		public void setTarget(Notifier newTarget) {
+//			//Do nothing
+//		}
+//		
+//		@Override
+//		public boolean isAdapterForType(Object type) {
+//			return type.equals(OSCARNode.class);
+//		}
+//		
+//	}
 
 	public OSCARNodeEditPart() {
 		super();
-		adapter = new OPMNodeAdapter();
+//		adapter = new OPMNodeAdapter();
 	}
 
 	@Override
@@ -64,21 +64,6 @@ public abstract class OSCARNodeEditPart extends AbstractGraphicalEditPart implem
 		return model.getSubscribeMSG();
 	}
 
-	@Override
-	public void activate() {
-		if(!isActive()) {
-			((OSCARNode)getModel()).eAdapters().add(adapter);
-		}
-		super.activate();
-	}
-
-	@Override
-	public void deactivate() {
-		if(isActive()) {
-			((OSCARNode)getModel()).eAdapters().remove(adapter);
-		}
-		super.deactivate();
-	}
 	
 	@Override
 	protected void createEditPolicies() {

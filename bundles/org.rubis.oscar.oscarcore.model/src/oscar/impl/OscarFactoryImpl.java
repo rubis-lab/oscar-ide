@@ -241,16 +241,7 @@ public class OscarFactoryImpl extends EFactoryImpl implements OscarFactory {
 	 * @generated
 	 */
 	public Point createPointFromString(EDataType eDataType, String initialValue) {
-		
-		if(initialValue == null) {
-			return null;
-		}
-		initialValue.replaceAll("\\s", "");
-		String[] values = initialValue.split(",");
-		if(values.length != 2) {
-			return null;
-		}
-		return new Point(Integer.parseInt(values[0]),Integer.parseInt(values[1]));
+		return (Point)super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -259,12 +250,7 @@ public class OscarFactoryImpl extends EFactoryImpl implements OscarFactory {
 	 * @generated
 	 */
 	public String convertPointToString(EDataType eDataType, Object instanceValue) {
-		
-		if(instanceValue == null){
-			return null;
-		}
-		Point point = (Point) instanceValue;
-		return point.x + "," + point.y;
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**
@@ -273,26 +259,7 @@ public class OscarFactoryImpl extends EFactoryImpl implements OscarFactory {
 	 * @generated
 	 */
 	public Rectangle createRectangleFromString(EDataType eDataType, String initialValue) {
-		
-		if(initialValue == null) {
-			return null;
-		}
-		
-		initialValue.replaceAll("\\s", "");
-		String[] values = initialValue.split(",");
-		if(values.length != 4) {
-			return null;
-		}
-		
-		Rectangle rect = new Rectangle();
-		try {
-			rect.setLocation(Integer.parseInt(values[0]), Integer.parseInt(values[1]));
-			rect.setSize(Integer.parseInt(values[2]), Integer.parseInt(values[3]));
-		} catch (NumberFormatException e) {
-			EcorePlugin.INSTANCE.log(e);
-			rect = null;
-		}
-		return rect;
+		return (Rectangle)super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -301,12 +268,7 @@ public class OscarFactoryImpl extends EFactoryImpl implements OscarFactory {
 	 * @generated
 	 */
 	public String convertRectangleToString(EDataType eDataType, Object instanceValue) {
-		
-		if(instanceValue == null) {
-		    return null;
-		  }
-		  Rectangle rect = (Rectangle) instanceValue;
-		  return rect.x+","+rect.y+","+rect.width+","+rect.height;
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

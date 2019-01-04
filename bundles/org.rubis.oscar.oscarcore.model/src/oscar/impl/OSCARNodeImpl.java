@@ -10,14 +10,12 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -27,7 +25,6 @@ import oscar.OSCARLink;
 import oscar.OSCARNode;
 import oscar.OSCARObjectProcessDiagram;
 import oscar.OscarPackage;
-import oscar.OscarFactory;
 
 /**
  * <!-- begin-user-doc -->
@@ -74,7 +71,7 @@ public class OSCARNodeImpl extends OSCARContainerImpl implements OSCARNode {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Rectangle CONSTRAINTS_EDEFAULT = (Rectangle)OscarFactory.eINSTANCE.createFromString(OscarPackage.eINSTANCE.getRectangle(), "0,0,150,75");
+	protected static final Rectangle CONSTRAINTS_EDEFAULT = null;
 	/**
 	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -196,7 +193,6 @@ public class OSCARNodeImpl extends OSCARContainerImpl implements OSCARNode {
 	 * @generated
 	 */
 	public EList<OSCARLink> getPublish() {
-	
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -208,7 +204,6 @@ public class OSCARNodeImpl extends OSCARContainerImpl implements OSCARNode {
 	 * @generated
 	 */
 	public EList<OSCARLink> getSubscribe() {
-		
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
