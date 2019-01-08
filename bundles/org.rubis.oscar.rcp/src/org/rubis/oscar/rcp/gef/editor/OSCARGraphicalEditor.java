@@ -86,7 +86,7 @@ public class OSCARGraphicalEditor extends GraphicalEditorWithFlyoutPalette
         getGraphicalViewer().addDropTargetListener(new TemplateTransferDropTargetListener(getGraphicalViewer()));
         getEditDomain().getPaletteViewer().addDragSourceListener(
           new TemplateTransferDragSourceListener(getEditDomain().getPaletteViewer()));
-        // end D&D -> it does not works........
+        // end D&D
 	}
 	
 	@Override

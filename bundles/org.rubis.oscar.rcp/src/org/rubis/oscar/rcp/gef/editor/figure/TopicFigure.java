@@ -12,6 +12,9 @@ import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.draw2d.PositionConstants;
+//JTJ
+import org.eclipse.draw2d.ColorConstants;
+import org.eclipse.draw2d.geometry.Dimension;
 
 public class TopicFigure extends OSCARThingFigure {
 	private Label nameLabel;
@@ -24,6 +27,7 @@ public class TopicFigure extends OSCARThingFigure {
 		add(nameLabel);
 		rectangle = new RoundedRectangle();
 		rectangle.setFill(false);
+		rectangle.setCornerDimensions(new Dimension(35, 35));
 		rectangle.setLayoutManager(new XYLayout());
 		add(rectangle);
 	}

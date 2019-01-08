@@ -15,8 +15,6 @@ public class MenuRunConfiguration {
 		// Create the window
 		final MTrimmedWindow window = MBasicFactory.INSTANCE.createTrimmedWindow();
 		//window.getTags().add("temporaryObject");		
-		window.setHeight(1000);
-		window.setWidth(1000);
 		
 		MPart part = modelService.createModelElement(MPart.class);
 		part.setContributionURI("platform:/plugin/org.rubis.oscar.rcp/org.rubis.oscar.rcp.EditRunConfiguration");
@@ -24,5 +22,8 @@ public class MenuRunConfiguration {
 		
 		
 		application.getChildren().add(window);
+		
+		window.setHeight(300);
+		window.setWidth(300);
 	}
 }
