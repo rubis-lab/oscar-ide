@@ -23,6 +23,11 @@ import org.rubis.oscar.rcp.gef.editor.figure.OSCARThingFigure;
 import org.rubis.oscar.rcp.gef.editor.policy.OSCARThingDirectEditPolicy;
 import oscar.OSCARThing;
 
+import org.eclipse.e4.ui.model.application.MApplication;
+import org.eclipse.e4.ui.model.application.ui.basic.MBasicFactory;
+import org.eclipse.e4.ui.model.application.ui.basic.MPart;
+import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
+
 public abstract class OSCARThingEditPart extends OSCARNodeEditPart implements NodeEditPart{
 	
 	
@@ -39,9 +44,15 @@ public abstract class OSCARThingEditPart extends OSCARNodeEditPart implements No
 	
 	@Override 
 	public void performRequest(Request req) {
+		// Single-click
 		if(req.getType() == RequestConstants.REQ_DIRECT_EDIT) {
 			performDirectEditing();
-		}	
+		}
+		
+		// Double-click JTJ
+	    if(req.getType() == RequestConstants.REQ_OPEN) {
+	        openTextEditor();
+	    }
 	}
 	
 	private void performDirectEditing() {
@@ -49,6 +60,12 @@ public abstract class OSCARThingEditPart extends OSCARNodeEditPart implements No
 		
 		OSCARThingDirectEditManager manager = new OSCARThingDirectEditManager(this, TextCellEditor.class, new OSCARThingCellEditorLocator(label), label);
 		manager.show();
+	}
+	
+	// JTJ open text editors
+	private void openTextEditor() {
+		// open text editor window
+		
 	}
 	
 	
