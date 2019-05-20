@@ -1,4 +1,4 @@
-# oscar-ide
+# Eclipse AVSys
 
 ## Prerequisites
 1. [Java SE Development Kit 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
